@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	 
+	<title>Clarinda Flores</title>
+	 
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputStylesheet library="css" name="layout.css"/>
+	
+	<style type="text/css"><!--
+	#logotipo {
+		text-align: center;
+	} -->
+    </style>
+</h:head>
+
+<body  id="page2">
+<div class="site_center">
+  <div class="site_center1">
+        <div id="header">
+        	<!--  <h:graphicImage library="imagens" name="top.jpg" styleClass="site_center" />-->
+      		<a href="#"><h:graphicImage library="imagens" name="icon.gif" styleClass="icon" /></a><a href="#"><h:graphicImage library="imagens" name="icon1.gif" styleClass="icon1" /></a><a href="#"><h:graphicImage library="imagens" name="icon2.gif" styleClass="icon2" /></a>
+			<a href="#"><h:graphicImage library="imagens" name="logo.gif" styleClass="logo" /></a>
+								<h:graphicImage library="imagens" name="m1.gif" styleClass="m1" />
+			<a href="#"><h:graphicImage library="imagens" name="m1.gif" styleClass="m1" /></a><a href="index-1.html"><h:graphicImage library="imagens" name="m2.gif" styleClass="m2" /></a><a href="index-2.html"><h:graphicImage library="imagens" name="m3.gif" styleClass="m3" /></a><a href="index-3.html"></a>
+        </div>
+   	<div id="content">	
+            <div class="row1">
+            	<div class="row1_bg">
+                	<div class="indent_main">
+                    	<div class="bg">
+                           <!--  Insira aqui o conteúdo da primeira Linha -->
+                           <h1>Cadastro de Usuários</h1>
+                           <h:form id="cadastro">
+                           		<h:messages/>
+                           		<h:inputHidden value="#{usuarioBean.usuario.codigo}" />
+                           		<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+                           		<h:inputHidden value="#{usuarioBean.destinoSalvar}" />
+                           		<h:inputHidden value="#{usuarioBean.senhaCriptografada}"/>
+                           		
+                           		<h:panelGrid column="2">
+                           			<h:outputLabel value="Nome:" for="nome"/>
+                           			<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30" maxlength="30" required="true" requiredMessage="Você não tem nome?">
+                           				<f:validateLength minimum="10" maximum="30"/>
+                                    </h:inputText>
+                           			
+                           			<h:outputLabel value="Data Nascimento:" for="data"/>
+                           			<h:inputText id="data" label="Data Nascimento" value="#{usuarioBean.usuario.nascimento}" size="10" maxlength="10" required="true" >
+                           				<f:convertDateTime dateStyle="medium" />
+                           			</h:inputText>
+                           			
+                           			<h:outputLabel value="Celular" for="celular" />
+                           			<h:inputText id="celular" label="Celular" value="#{usuarioBean.usuario.celular}" size="10" />
+                           			
+                           			<h:outputLabel value="e-Mail:" for="email" />
+                           			<h:panelGroup>
+                           				<h:inputText id="email" label="e-Mail" value="#{usuarioBean.usuario.email}" size="50" maxlength="50" required="true" validatorMessage="e-Mail inválido">
+                           					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
+                           				</h:inputText>
+                           				<h:message for="email"/>
+                           			</h:panelGroup>
+                           			
+                           			<h:outputLabel value="Login:" for="login"/>
+                           			<h:inputText id="login" label="Login" value="#{usuarioBean.usuario.login}" size="15" maxlength="15" required="true" validatorMessage="Login deve ter no mínimo 5 e no máximo 15 caracteres e só pode ter os símbolos '.' e '_'.">
+                           				<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}"/>
+                           			</h:inputText>
+                           		
+                           			<h:outputLabel value="Senha:" for="senha" />
+                           			<h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" size="10" maxlength="10" required="#{empty contextoBean.usuarioLogado}" redisplay="false" />
+                           			
+                           			<h:outputLabel value="Confirmar Senha:" for="confirmarsenha"/>
+                           			<h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10" required="#{empty contextoBean.usuarioLogado}" redisplay="false" />
+                           		</h:panelGrid>
+                           		<h:commandButton action="#{usuarioBean.salvar}" value="Salvar" />
+                           </h:form>
+                     	 </div>
+                    </div>
+                </div>
+            </div>
+        	<div class="row2">
+            	<div class="row2_bg">
+                	<div class="indent_main">
+                      <div class="bg">
+                            <!-- Insira aqui o conteúdo da segunda Linha -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </div>	 
+        <div id="footer"><div class="indent_footer">Daniel P. &copy; 2015 | <a href="index-6.html">Privacy Policy</a></div></div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+

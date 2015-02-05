@@ -1,0 +1,119 @@
+/* background-image: url("#{resource['css:imgSite/sisLogo.png']}"); */
+/* CSS Document */
+* { margin:0; padding:0;}
+
+.column { float:left;}
+.clear { clear:both;}
+
+html, body { height:100%; }
+body {font-size:100%; line-height:0.85em; background-image: url("#{resource['css:imagens/bg_top.gif']}"); background-repeat: repeat-x; background-position: top;}
+html, input, textarea
+	{	font-family:Tahoma; 
+		color:#5d5853;
+	}	
+
+
+.vam{ vertical-align:middle}
+.fl{ float:left}
+.fr{ float:right}
+.tac{ text-align: center}
+
+a img{ border:0px}
+img{ vertical-align:top;  }
+
+.width{ width:100%; }
+b{color:#018eb9;}
+a{color:#5fb90f; text-decoration:underline; } 
+a:hover{text-decoration:none}
+
+h2 a{color:#0f9ed6; font-size:1.1em} 
+
+.a2{margin:15px 0 0 0; padding:0px} 
+.a3{color:#0f9ed6; font-size:1.3em; font-weight:bold}
+.di{ display:inline}
+
+ul{margin:0; padding:0; list-style:none}
+ul li{background-image: url("#{resource['css:imagens/arrow.gif']}"); background-position: top left; background-repeat: no-repeat; background-position:0 11px; margin:0px; padding-left:10px; line-height:18px; font-weight:bold; font-size:1.16em }
+ul li a{color:#0f9ed6; font-size:1.1em }
+
+/*header*/
+#header .icon{ margin:20px 0 0px 829px }
+#header .icon1{ margin:20px 0 0px 0px }
+#header .icon2{ margin:20px 0 0px 0px }
+#header .logo{ margin:37px 0 63px 423px }
+#header .m1{ margin:0px 0 0px 281px }
+
+/*content*/
+#content{ font-size:0.6875em; width:100%; background-image: url("#{resource['css:imagens/bg_main.gif']}"); background-repeat: repeat-y; padding:0px 22px 0px 21px; }
+#content .title{ margin-bottom:11px}
+#content .title1{ margin-bottom:24px}
+#content .title2{ margin-bottom:0px}
+#content p{ margin:11px 0px 0px 0px}
+#content .p{ margin:0px 0px 20px 0px}
+#content .p1{ margin:0px 0px 5px 0px; float:right}
+#content .p2{ margin:0px}
+#content .p3{ margin:20px 0px 20px 0px}
+#content .p4{ margin:18px 0px 15px 0px}
+#content .h2{ padding-bottom:0px; }
+#content h2{ font-size:1.3em; color:#0f9dd6; padding-bottom:8px; font-weight:normal	}
+#content h2 a{ font-size:1em; color:#0f9dd6; font-weight:bold}
+#content .pic_left{ float:left; margin:0px 23px 11px 0px}
+#content .pic_left1{ float:left; margin:0px 15px 24px 0px}
+#content .pic{ margin:0px 0px 9px 0px}
+#content .indent{ padding:0px 18px 10px 0px}
+#content .indent1{ padding:13px 25px 35px 0px}
+#content .indent2{ padding:13px 33px 8px 26px}
+#content .indent4{ padding:0px 0px 20px 0px}
+#content .indent5{ padding:13px 0px 8px 26px}
+#content .txt{ color:#c8c8c8}
+
+.row1{ background-image: url("#{resource['css:imagens/bg_row1-1.gif']}"); background-repeat: repeat-y; width:100%}
+.row1_bg{ background-image: url("#{resource['css:imagens/bg_row1.jpg']}"); background-repeat: no-repeat; background-position: top left; width:100%}
+.row1 .indent_main{ padding:0px 26px 37px 17px}
+.row2{ background-image: url("#{resource['css:imagens/bg_row2-2.jpg']}"); background-repeat: repeat-x; background-position: top; color:#5f6e73; line-height:1.54em; width:100%}
+.row2_bg{ background-image: url("#{resource['css:imagens/bg_row2.jpg']}"); background-repeat: no-repeat; background-position: top left; width:100%}
+.row2 .indent_main{ padding:16px 26px 28px 17px}
+
+
+/*======= index.html =======*/
+#page1 #content .row2 .bg{ background-image: url("#{resource['css:imagens/line_y.gif']}"); background-repeat: repeat-y; 430px 0px}
+
+/*======= index-1.html =======*/
+#page2 #content .row1 .bg{ background:url(images/line_y.gif) repeat-y 445px 0px;}
+#page2 #content .row2 .bg{ background:url(images/line_y.gif) repeat-y 430px 0px}
+#page2 #content .row1 .col1 .indent{ padding:0px 30px 0px 0px}
+#page2 #content .row1 .col2 .indent{ padding:0px 40px 0px 33px}
+/*======= index-2.html =======*/
+#page3 #content .row2 .indent_main{ padding:16px 26px 48px 17px}
+/*======= index-3.html =======*/
+#page4 #content .row2 .bg{ background:url(images/line_y.gif) repeat-y 430px 0px}
+/*======= index-4.html =======*/
+#page5 #content .row1 .bg{ background:url(images/line_y.gif) repeat-y 430px 0px}
+/*======= index-5.html =======*/
+#page6 #content .row1 .bg{ background:url(images/line_y.gif) repeat-y 405px 0px}
+#page6 #content .row2 .bg{ background:url(images/line_y.gif) repeat-y 430px 0px}
+#page6 #content .row1 .col1 .indent{ padding:0px 30px 0px 0px}
+#page6 #content .row1 .col2 .indent{ padding:0px 40px 0px 33px}
+#page6 #content span{ display:block; float:right}
+/*======= index-6.html =======*/
+#page7 #content .row1 .indent_main{ padding:0px 26px 57px 17px}
+#page7 #content .row2 .indent_main{ padding:16px 26px 58px 17px}
+
+/*footer*/
+#footer { color:#ffffff; font-size:0.6875em; height:77px}
+#footer .indent_footer{padding:26px 0px 37px 50px}
+#footer a {color:#a2d5e9; text-decoration:none; font-size:1em}  
+#footer a:hover {  text-decoration:underline}
+
+.h{ height:38px}
+input{
+   width:168px; height:21px;
+   font-size:1em;
+   padding:2px 0 0 5px;
+}
+textarea{
+   width:215px; height:136px;
+   font-size:1em;
+   padding:1px 0 0 5px;
+   margin-bottom:11px;
+   overflow:auto}

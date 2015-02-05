@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+    	
+    	<!-- Antigo conexão Hibernate para o BD  
+    	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    	<property name="connection.url">jdbc:mysql://192.168.56.101:3306/floricultura</property>
+    	<property name="connection.username">hmg</property>
+    	<property name="connection.password">hmg123</property>
+    	-->
+    	
+    	<property name="connection.datasource">java:/comp/env/jdbc/floriculturaDB</property>
+    	<property name="current_session_context_class">thread</property> <!-- Necessário para o filtro de conexão -->
+    	<property name="hibernate.hbm2ddl.auto">update</property>
+   
+    	<mapping class="floricultura.categoria.Categoria"/>
+    	<mapping class="floricultura.produto.Produto"/>
+    	<mapping class="floricultura.usuario.Usuario"/>
+    	
+    </session-factory>
+</hibernate-configuration>
