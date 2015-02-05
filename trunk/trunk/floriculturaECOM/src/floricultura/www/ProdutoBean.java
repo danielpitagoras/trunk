@@ -25,31 +25,6 @@ public class ProdutoBean {
 	private Part arqImagem;
 	private StreamedContent imgStream;
 
-	public StreamedContent getImgStream() throws IOException {
-		FacesContext context = FacesContext.getCurrentInstance();
-		
-	    if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-	        // Fase de renderização.
-	        return new DefaultStreamedContent();
-	    }
-	    else {
-	        // Fase do browser solicitar a imagem.
-	        String id = context.getExternalContext().getRequestParameterMap().get("id");
-	        //Image image = service.find(Long.valueOf(id));
-	        //return new DefaultStreamedContent(new ByteArrayInputStream(image.getBytes()));
-	        ContextoBean contextoBean = ContextoUtil.getContextoBean();
-	        return new DefaultStreamedContent(new ByteArrayInputStream(contextoBean.getImgb()));
-	    	//return null;
-	       
-/*	        for (int i = 0; i < lista.size(); i++) {
-	    	   if (Integer.valueOf(id) == lista.get(i).getCodigo()) {
-	    		 return new DefaultStreamedContent(new ByteArrayInputStream(lista.get(i).getImagem()));
-	    	   }	   
-	       }*/
-	        //return new DefaultStreamedContent(new ByteArrayInputStream(contextoBean.getImgb()));
-	    }
-	}
-
 	public void setImgStream(StreamedContent imgStream) {
 		this.imgStream = imgStream;
 	}
@@ -64,9 +39,9 @@ public class ProdutoBean {
 			this.lista = produtoRN.listar();
 			
 			//System.out.println(produto.getNome());
-			for (Produto produto: lista) {
-					contextoBean.setImgb(produto.getImagem());
-			}
+			//for (Produto produto: lista) {
+			//		contextoBean.setImgb(produto.getImagem());
+			//}
 		}
 		return this.lista;
 		
