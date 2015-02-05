@@ -1,13 +1,19 @@
 package floricultura.www;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import javax.faces.bean.*;
 import javax.faces.context.*;
+import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 import org.apache.commons.io.IOUtils;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import javax.servlet.http.Part;
 import floricultura.usuario.*;
+import floricultura.util.ContextoUtil;
 import floricultura.categoria.*;
 import floricultura.produto.*;
 
@@ -19,9 +25,38 @@ public class ContextoBean {
 	private Usuario usuarioLogado = null;
 	private Part arqImagem = null;
 	private byte[] imgb = null;
+	private List<Produto> lista;
 	
 	public ContextoBean() {
 		
+	}
+	
+	public StreamedContent getImgStream() throws IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+	    if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+	        // Fase de renderização.
+	        return new DefaultStreamedContent();
+	    }
+	    else {
+	        // Fase do browser solicitar a imagem.
+	        String id = context.getExternalContext().getRequestParameterMap().get("id");
+	        //Image image = service.find(Long.valueOf(id));
+	        //return new DefaultStreamedContent(new ByteArrayInputStream(image.getBytes()));
+	        //ContextoBean contextoBean = ContextoUtil.getContextoBean();
+	        //return new DefaultStreamedContent(new ByteArrayInputStream(contextoBean.getImgb()));
+	    	//return null;
+	        
+	        ProdutoRN produtoRN = new ProdutoRN();
+			this.lista = produtoRN.listar();
+	       
+	        for (int i = 0; i < lista.size(); i++) {
+	    	   if (Integer.valueOf(id) == lista.get(i).getCodigo()) {
+	    		   return new DefaultStreamedContent(new ByteArrayInputStream(lista.get(i).getImagem()));
+	    	   }	   
+	       }
+	        return new DefaultStreamedContent();
+	    }
 	}
 	
 	public void uploadIMG(){
