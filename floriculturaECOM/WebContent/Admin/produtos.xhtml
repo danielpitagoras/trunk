@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:p="http://primefaces.prime.com.tr/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:s="http://myfaces.apache.org/sandbox"
+	  xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	 
+	<title>Clarinda Flores</title>
+	 
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputStylesheet library="css" name="layout.css"/>
+	
+	<style type="text/css"><!--
+	#logotipo {
+		text-align: center;
+	} -->
+    </style>
+</h:head>
+
+<body  id="page2">
+<div class="site_center">
+  <div class="site_center1">
+        <div id="header">
+        	<!--  <h:graphicImage library="imagens" name="top.jpg" styleClass="site_center" />-->
+      		<a href="#"><h:graphicImage library="imagens" name="icon.gif" styleClass="icon" /></a><a href="#"><h:graphicImage library="imagens" name="icon1.gif" styleClass="icon1" /></a><a href="#"><h:graphicImage library="imagens" name="icon2.gif" styleClass="icon2" /></a>
+			<a href="#"><h:graphicImage library="imagens" name="logo.gif" styleClass="logo" /></a>
+								<h:graphicImage library="imagens" name="m1.gif" styleClass="m1" />
+			<a href="#"><h:graphicImage library="imagens" name="m1.gif" styleClass="m1" /></a><a href="index-1.html"><h:graphicImage library="imagens" name="m2.gif" styleClass="m2" /></a><a href="index-2.html"><h:graphicImage library="imagens" name="m3.gif" styleClass="m3" /></a><a href="index-3.html"></a>
+        </div>
+   	<div id="content">	
+            <div class="row1">
+            	<div class="row1_bg">
+                	<div class="indent_main">
+                    	<div class="bg">
+                           <!--  Insira aqui o conteúdo da primeira Linha -->
+                           Usuário logado #{request.remoteUser}
+                           <br/>
+                           <h1>#{contextoBean.usuarioLogado.nome}</h1><br/>
+                           <h:form id="preedicao" enctype="multipart/form-data">
+                           		<h:outputLabel value="Arquivo com imagem: " for="upArq"/>
+                           		<h:inputFile id="upArq" value="#{contextoBean.arqImagem}">
+                           			<f:ajax execute="upArq" render=":edicao" />
+                           		</h:inputFile>
+                           		<h:commandButton value="Upload" action="#{contextoBean.uploadIMG}"/>
+                           </h:form>
+
+                           <h:form id="edicao" enctype="x-www-form-urlencoded">
+                           		<h:messages />
+                           		<h:inputHidden value="#{produtoBean.selecionado.codigo}" />
+   					
+                           		<h:panelGrid columns="2">	
+                      
+                       			<h:outputLabel value="Selecione a categoria do Produto: " for="categoria"/>
+								<h:selectOneListbox id="categoria" value="#{produtoBean.selecionado.categoria}">									  	
+            						<f:selectItems value="#{categoriaBean.lista}" var="c" itemLabel="#{c.nome}" itemValue="#{c.nome}" />
+            						<f:converter converterId="conversorCategoria"/>	
+            					</h:selectOneListbox>
+                       				
+                           			<h:outputLabel value="Nome: " for="nome" />
+                           			<h:inputText id="nome" value="#{produtoBean.selecionado.nome}" required="true" maxlength="25" /> 
+                           
+                           			<h:outputLabel value="Peso: " for="peso" />
+                           			<h:inputText id="peso" value="#{produtoBean.selecionado.peso}" required="true" maxlength="5" />			
+                           		
+                           			<h:outputLabel value="Preço: " for="preco" />
+                           			<h:inputText id="preco" value="#{produtoBean.selecionado.preco}" required="true" maxlength="10" />
+                           			
+                           			<h:outputLabel value="Observação: " for="obs" />
+                           			<h:inputText id="obs" value="#{produtoBean.selecionado.observacao}" required="true" maxlength="100" />
+                           
+                           			<h:commandButton value="Salvar" action="#{produtoBean.salvar}">
+                           				<f:ajax execute="@form" render=":edicao :listagem"/> 
+                           			</h:commandButton>
+                           
+                           		</h:panelGrid>	
+                           </h:form>
+                           
+                          
+                     	 </div>
+                    </div>
+                </div>
+            </div>
+        	<div class="row2">
+            	<div class="row2_bg">
+                	<div class="indent_main">
+                      <div class="bg">
+                            <!-- Insira aqui o conteúdo da segunda Linha -->
+                            
+                            <h:form id="listagem" enctype="multipart/form-data">
+                           <h:dataTable value="#{produtoBean.lista}" var="produto" rules="rows" cellpadding="15" rendered="#{!empty produtoBean.lista}">
+                           		<f:facet name="caption">
+                           			A listagem a seguir exibe a relação de todos os produtos do sistema. Opções[Edição, exclusão].
+                           		</f:facet>
+                           		<f:facet name="header">Listagem de Produtos</f:facet>
+                           		<f:facet name="footer">Final da listagem</f:facet>
+                           		<h:column>
+                           			<f:facet name="header">Código</f:facet>#{produto.codigo}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Imagem</f:facet>
+                           			
+                           			<p:graphicImage value="#{produtoBean.imgStream}">
+                           				<f:param name="id" value="#{produto.codigo}" />
+                           			</p:graphicImage>	
+                           			
+                           			<!-- 
+                           			<s:graphicImageDynamic id="mostraImagem" imageRendererClass="#{graphicImageDynamicBean.imageRenderer}">
+                           				<f:param value = "#{produto.imagem}" name ="imageId"/>
+                           			</s:graphicImageDynamic>
+                           			
+                           			<p:graphicImage value="#{produto.imagem}">
+                           				<f:param name="id" value="#{prodImgBean.idImagem}" />
+                           			</p:graphicImage>
+                           			
+                           			<s:graphicImageDynamic height="32" width="32" imageRendererClass="#{gmShowImageBean.imageRendererClass}"> 
+										<f:param value="#{info.imageId}" name="imageId"/> 
+									</ S: graphicImageDynamic>
+                           			-->
+                           			
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Nome</f:facet>#{produto.nome}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Peso</f:facet>#{produto.peso}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Preço</f:facet>#{produto.preco}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Observação</f:facet>#{produto.observacao}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Data Inserção</f:facet>#{produto.dataCriacao}
+                           		</h:column>
+                           		<!--  
+                           		<h:column>
+                           			<h:commandLink action="#{produtoBean.editar}">
+                           				<h:graphicImage library="imagens" name="editar16.png" style="border:0" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.destinoSalvar}" value="/Admin/principal" />
+                           			</h:commandLink>
+                           		</h:column>
+                           		<h:column>
+                           			<h:commandLink action="#{usuarioBean.excluir}" >
+                           				<h:graphicImage library="imagens" name="excluir16.png" style="border:0" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}" />
+                           			</h:commandLink>
+                           		</h:column>
+                           		-->
+                           </h:dataTable>
+                           </h:form>
+                            
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </div>	 
+        <div id="footer"><div class="indent_footer">Daniel P. &copy; 2015 | <a href="">Privacy Policy</a></div></div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+

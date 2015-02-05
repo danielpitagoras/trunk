@@ -1,0 +1,56 @@
+/* background-image: url("#{resource['css:imgSite/sisLogo.png']}"); */
+.site_center{text-align:center; width:100%; background-image: url("#{resource['css:imagens/bg_bottom.gif']}"); background-repeat: repeat-x; background-position: bottom; }
+
+.col1, .col2, .col3, .col4, .col5, .col6{ float:left}
+/*======= width =======*/
+.site_center1{margin:0 auto; text-align:left; width:980px; }
+
+/*======= header =======*/
+#header {height:379px;  background-image: url("#{resource['css:imagens/top.jpg']}"); background-repeat: no-repeat; background-position: top center;}
+
+/*======= index.html =======*/
+#page1 #content .row1 .col1{ width:228px}
+#page1 #content .row1 .col2{ width:228px}
+#page1 #content .row1 .col3{ width:228px}
+#page1 #content .row1 .col4{ width:209px}
+#page1 #content .row2 .col1{ width:430px}
+#page1 #content .row2 .col2{ width:463px}
+/*======= index-1.html =======*/
+#page2 #content .row1 .col1{ width:446px}
+#page2 #content .row1 .col2{ width:445px}
+#page2 #content .row2 .col1{ width:430px}
+#page2 #content .row2 .col2{ width:463px}
+/*======= index-2.html =======*/
+#page3 #content .row1 .col1{ width:341px}
+#page3 #content .row1 .col2{ width:550px}
+#page3 #content .row2 .col1{ width:228px}
+#page3 #content .row2 .col2{ width:228px}
+#page3 #content .row2 .col3{ width:228px}
+#page3 #content .row2 .col4{ width:209px}
+/*======= index-3.html =======*/
+#page4 #content .row1 .col1{ width:228px}
+#page4 #content .row1 .col2{ width:228px}
+#page4 #content .row1 .col3{ width:228px}
+#page4 #content .row1 .col4{ width:209px}
+#page4 #content .row2 .col1{ width:430px}
+#page4 #content .row2 .col2{ width:463px}
+/*======= index-4.html =======*/
+#page5 #content .row1 .col1{ width:430px}
+#page5 #content .row1 .col2{ width:463px}
+#page5 #content .row2 .col1{ width:159px}
+#page5 #content .row2 .col2{ width:165px}
+#page5 #content .row2 .col3{ width:164px}
+#page5 #content .row2 .col4{ width:155px}
+#page5 #content .row2 .col5{ width:154px}
+#page5 #content .row2 .col6{ width:97px}
+/*======= index-5.html =======*/
+#page6 #content .row1 .col1{ width:406px}
+#page6 #content .row1 .col2{ width:483px}
+#page6 #content .row2 .col1{ width:430px}
+#page6 #content .row2 .col2{ width:463px}
+/*======= index-6.html =======*/
+#page7 #content .row1 .col1{ width:893px}
+#page7 #content .row2 .col1{ width:893px}
+
+/*======= footer =======*/
+#footer { background-image: url("#{resource['css:imagens/bot.gif']}"); }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	 
+	<title>Clarinda Flores</title>
+	 
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputStylesheet library="css" name="layout.css"/>
+	
+	<style type="text/css"><!--
+	#logotipo {
+		text-align: center;
+	} -->
+    </style>
+</h:head>
+
+<body  id="page2">
+<div class="site_center">
+  <div class="site_center1">
+        <div id="header">
+        	<!--  <h:graphicImage library="imagens" name="top.jpg" styleClass="site_center" />-->
+      		<a href="#"><h:graphicImage library="imagens" name="icon.gif" styleClass="icon" /></a><a href="#"><h:graphicImage library="imagens" name="icon1.gif" styleClass="icon1" /></a><a href="#"><h:graphicImage library="imagens" name="icon2.gif" styleClass="icon2" /></a>
+			<a href="#"><h:graphicImage library="imagens" name="logo.gif" styleClass="logo" /></a>
+								<h:graphicImage library="imagens" name="m1.gif" styleClass="m1" />
+			<a href="#"><h:graphicImage library="imagens" name="m1.gif" styleClass="m1" /></a><a href="index-1.html"><h:graphicImage library="imagens" name="m2.gif" styleClass="m2" /></a><a href="index-2.html"><h:graphicImage library="imagens" name="m3.gif" styleClass="m3" /></a><a href="index-3.html"></a>
+        </div>
+   	<div id="content">	
+            <div class="row1">
+            	<div class="row1_bg">
+                	<div class="indent_main">
+                    	<div class="bg">
+                           <!--  Insira aqui o conteúdo da primeira Linha -->
+                           <h:form id="cadastro">
+                           <h:dataTable value="#{usuarioBean.lista}" var="usuario" rules="rows" cellpadding="5">
+                           		<f:facet name="caption">
+                           			A listagem a seguir exibe a relação de todos os usuários do sistema. Opções[Ativar, Desativar, Edição, exclusão].
+                           		</f:facet>
+                           		<f:facet name="header">Listagem de Usuários</f:facet>
+                           		<f:facet name="footer">Final da listagem</f:facet>
+                           		<h:column>
+                           			<h:commandLink action="#{usuarioBean.ativar}">
+                           				<h:graphicImage library="imagens" name="usuario_ativo_#{usuario.ativo}.png" style="border:0" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}" />
+                           			</h:commandLink>
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Código</f:facet>#{usuario.codigo}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">Nome</f:facet>#{usuario.nome}
+                           		</h:column>
+                           		<h:column>
+                           			<f:facet name="header">e-Mail</f:facet><a href="mailto:#{usuario.email}">#{usuario.email}</a>
+                           		</h:column>
+                           		<h:column>
+									<f:facet name="header">Permissões</f:facet>
+										<h:commandLink action="#{usuarioBean.atribuiPermissao(usuario, 'ROLE_ADMINISTRATOR')}" title="Permissão Administrador">
+											<h:graphicImage library="imagens" name="ROLE_ADMINISTRADOR_#{usuario.permissao.contains('ROLE_ADMINISTRADOR')}.png" style="border:0" />
+										</h:commandLink>
+										<h:commandLink action="#{usuarioBean.atribuiPermissao(usuario, 'ROLE_USUARIO_VIP')}" title="Permissao Usuário VIP">
+											<h:graphicImage library="imagens" name="ROLE_USUARIO_VIP_#{usuario.permissao.contains('ROLE_USUARIO_VIP')}.png" style="border:0" />
+										</h:commandLink>
+								</h:column>
+                           		<h:column>
+                           			<h:commandLink action="#{usuarioBean.editar}">
+                           				<h:graphicImage library="imagens" name="editar16.png" style="border:0" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.destinoSalvar}" value="/Admin/principal" />
+                           			</h:commandLink>
+                           		</h:column>
+                           		<h:column>
+                           			<h:commandLink action="#{usuarioBean.excluir}" >
+                           				<h:graphicImage library="imagens" name="excluir16.png" style="border:0" />
+                           				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}" />
+                           			</h:commandLink>
+                           		</h:column>
+                           </h:dataTable>
+                           </h:form>
+                     	 </div>
+                    </div>
+                </div>
+            </div>
+        	<div class="row2">
+            	<div class="row2_bg">
+                	<div class="indent_main">
+                      <div class="bg">
+                            <!-- Insira aqui o conteúdo da segunda Linha -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </div>	 
+        <div id="footer"><div class="indent_footer">Daniel P. &copy; 2015 | <a href="index-6.html">Privacy Policy</a></div></div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
