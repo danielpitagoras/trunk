@@ -51,7 +51,7 @@
                            		<h:column>
                            			<f:facet name="header">Imagem</f:facet>
                            			
-                           			<p:graphicImage value="#{produtoBean.imgStream}" width="100" height="70">
+                           			<p:graphicImage value="#{contextoBean.imgStream}" width="100" height="70">
                            				<f:param name="id" value="#{produto.codigo}" />
                            			</p:graphicImage>	
                            			
@@ -105,7 +105,7 @@
                            		<h:inputFile id="upArq" value="#{contextoBean.arqImagem}">
                            			<f:ajax execute="upArq" render=":edicao" />
                            		</h:inputFile>
-                           		<h:commandButton value="Upload" action="#{contextoBean.uploadIMG}"/>
+                           		<h:commandButton value="Upload" action="#{contextoBean.uploadIMG}" />
                            </h:form>
 
                            <h:form id="edicao" enctype="x-www-form-urlencoded">
