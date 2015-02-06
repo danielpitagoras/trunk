@@ -79,13 +79,15 @@
                            				<f:setPropertyActionListener target="#{usuarioBean.destinoSalvar}" value="/Admin/principal" />
                            			</h:commandLink>
                            		</h:column>
+                           		-->
                            		<h:column>
-                           			<h:commandLink action="#{usuarioBean.excluir}" >
+                           		 
+                           			<h:commandLink action="#{produtoBean.excluir}" >
                            				<h:graphicImage library="imagens" name="excluir16.png" style="border:0" />
-                           				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}" />
+                           				<f:setPropertyActionListener target="#{produtoBean.selecionado}" value="#{produto}" />
                            			</h:commandLink>
                            		</h:column>
-                           		-->
+                           	
                            </h:dataTable>
                            </h:form>
                            

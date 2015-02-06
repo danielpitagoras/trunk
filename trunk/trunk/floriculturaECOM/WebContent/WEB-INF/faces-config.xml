@@ -10,14 +10,19 @@
 				<from-outcome>inicio</from-outcome>
 				<to-view-id>/publico/main.jsf</to-view-id>
 			</navigation-case>
-		</navigation-rule>
-			<!--  
 			<navigation-case>
 				<from-outcome>usuario</from-outcome>
 				<to-view-id>/publico/usuario.xhtml</to-view-id>
 			</navigation-case>
 		</navigation-rule>
-
+		<navigation-rule>
+			<from-view-id>/categoria.xhtml</from-view-id>	  
+			<navigation-case>
+				<from-outcome>categoriaSucesso</from-outcome>
+				<to-view-id>/Admin/produtos.xhtml</to-view-id>
+			</navigation-case>
+		</navigation-rule>
+		<!--
 		<navigation-rule>
 			<from-view-id>/usuario.xhtml</from-view-id>
 			<navigation-case>

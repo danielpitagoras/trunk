@@ -8,7 +8,7 @@
 	<http>
 		<intercept-url pattern="/Admin/**" access="ROLE_ADMINISTRADOR" />
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO" />
-		<form-login login-page="/publico/login.jsf" always-use-default-target="true" default-target-url="/Admin/produtos.jsf" authentication-failure-url="/publico/login.jsf?login_error=1" />
+		<form-login login-page="/publico/login.jsf" always-use-default-target="true" default-target-url="/Admin/categoria.jsf" authentication-failure-url="/publico/login.jsf?login_error=1" />
 		<logout/>
 		<remember-me />
 	</http>
