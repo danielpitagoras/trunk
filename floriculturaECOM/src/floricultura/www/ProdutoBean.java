@@ -4,15 +4,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.util.List;
+
 import org.apache.commons.io.IOUtils;
 import org.primefaces.model.*;
-import org.primefaces.model.StreamedContent;
+
 import javax.faces.bean.*;
 import javax.faces.event.*;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
+
 import floricultura.produto.Produto;
 import floricultura.produto.ProdutoRN;
+import floricultura.usuario.UsuarioRN;
 import floricultura.util.ContextoUtil;
 
 @ManagedBean(name = "produtoBean")
@@ -35,7 +38,7 @@ public class ProdutoBean {
 		if (this.lista == null) {
 			
 			ProdutoRN produtoRN = new ProdutoRN();
-			ContextoBean contextoBean = ContextoUtil.getContextoBean();
+			//ContextoBean contextoBean = ContextoUtil.getContextoBean();
 			this.lista = produtoRN.listar();
 			
 			//System.out.println(produto.getNome());
@@ -44,10 +47,8 @@ public class ProdutoBean {
 			//}
 		}
 		return this.lista;
-		
 	}
 	
-
 	public String salvar() {
 		
 		ProdutoRN produtoRN = new ProdutoRN();
@@ -56,6 +57,12 @@ public class ProdutoBean {
 		produtoRN.salvar(this.selecionado);
 		return null;		
 		
+	}
+	
+	public String excluir(){
+		ProdutoRN produtoRN = new ProdutoRN();
+		produtoRN.excluir(this.selecionado);
+		return null;
 	}
 	
 	public Produto getSelecionado() {

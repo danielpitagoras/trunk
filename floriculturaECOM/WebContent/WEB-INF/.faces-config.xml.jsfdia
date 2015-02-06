@@ -5,8 +5,24 @@
    <PROCESS-ITEM-OUTPUT ID="inicio::#publico#main.jsf" NAME="output"
     PATH="/publico/main.jsf" TARGET="rules:#publico#main.jsf"
     TITLE="inicio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="usuario::#publico#usuario.xhtml"
+    NAME="output1" PATH="/publico/usuario.xhtml"
+    TARGET="rules:#publico#usuario.xhtml" TITLE="usuario" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#publico#main.jsf" PATH="/publico/main.jsf"
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Admin#produtos.xhtml"
+  PATH="/Admin/produtos.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#categoria.xhtml" PATH="/categoria.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#categoria.xhtml:0" NAME="item"
+   PATH="/categoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="categoriaSucesso::#Admin#produtos.xhtml"
+    NAME="output" PATH="/Admin/produtos.xhtml"
+    TARGET="rules:#Admin#produtos.xhtml" TITLE="categoriaSucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#publico#usuario.xhtml"
+  PATH="/publico/usuario.xhtml" SHAPE="256,289,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
