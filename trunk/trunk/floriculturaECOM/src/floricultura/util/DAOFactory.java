@@ -1,8 +1,11 @@
 package floricultura.util;
 
 import floricultura.categoria.*;
+import floricultura.pedido.PedidoDAOHibernate;
 import floricultura.produto.*;
 import floricultura.usuario.*;
+import floricultura.pedido.*;
+import floricultura.itemPedido.*;
 
 public class DAOFactory {
 
@@ -28,6 +31,21 @@ public class DAOFactory {
 		return produtoDAO;
 		
 	}
-
+	
+	public static PedidoDAO criarPedidoDAO() {
+		
+		PedidoDAOHibernate pedidoDAO = new PedidoDAOHibernate();
+		pedidoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return pedidoDAO;
+	}
+	
+	public static ItemPedidoDAO criarItemPedidoDAO() {
+		
+		ItemPedidoDAOHibernate itemPedidoDAO = new ItemPedidoDAOHibernate();
+		itemPedidoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return itemPedidoDAO;
+		
+	}
+	
 	
 }
