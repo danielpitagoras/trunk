@@ -20,6 +20,8 @@
     	<mapping class="floricultura.categoria.Categoria"/>
     	<mapping class="floricultura.produto.Produto"/>
     	<mapping class="floricultura.usuario.Usuario"/>
+    	<mapping class="floricultura.pedido.Pedido"/>
+    	<mapping class="floricultura.itemPedido.ItemPedido"/>
     	
     </session-factory>
 </hibernate-configuration>
