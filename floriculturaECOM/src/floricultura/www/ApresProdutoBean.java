@@ -8,10 +8,10 @@ import floricultura.produto.Produto;
 import floricultura.produto.ProdutoRN;
 import floricultura.categoria.Categoria;
 
-@ManagedBean(name = "pedidoBean")
+@ManagedBean(name = "apresProdutoBean")
 @RequestScoped
 
-public class PedidoBean {
+public class ApresProdutoBean {
 
 	private Categoria catSelecionada;
 	private List<Produto> lista;
@@ -24,10 +24,8 @@ public class PedidoBean {
 			
 			if (catSelecionada == null) {
 				this.lista = produtoRN.listar();
-				//this.lista = produtoRN.listarPorCategoria(catSelecionada);
 			} else {
 				this.lista = produtoRN.listarPorCategoria(catSelecionada);
-				//this.lista = produtoRN.listar();
 			}
 		}
 		return this.lista;

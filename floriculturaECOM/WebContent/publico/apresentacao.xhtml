@@ -37,45 +37,18 @@
                     	<div class="bg">
                            <!--  Insira aqui o conteúdo da primeira Linha -->
                           
-                        <h:form id="form">
-                        
-    						<p:carousel value="#{produtoBean.lista}" headerText="Produtos" var="produto" effect="fade" vertical="false" numVisible="4" circular="false" itemStyle="height:250px;width:290px">
-       							<h:panelGrid columns="2" style="width:100%" cellpadding="2" columnClasses="label,value">
-           							<f:facet name="header">
-                						<p:graphicImage value="#{contextoBean.imgStream}" width="100" height="70">
-                           				<f:param name="id" value="#{produto.codigo}" />
-                           			</p:graphicImage> 
-            						</f:facet>
- 
-            						<h:outputText value="Nome: " />
-            						<h:outputText value="#{produto.nome}" />
- 
-            						<h:outputText value="Peso: " />
-            						<h:outputText value="#{produto.peso}" />
- 
-            						<h:outputText value="Preço:" />
-            						<h:outputText value="#{produto.preco}" />
- 
-            						<h:outputText value="Observação" />
-            						<h:outputText value="#{produto.observacao}" />
-        						
-        						</h:panelGrid>
-        							<br></br>
-        							<p:commandLink update=":form:detail" oncomplete="PF('dlg').show()">
-        								<h:outputText value="Adicionar ao carrinho" style="color:blue" />
-        								<!--<f:setPropertyActionListener value="#{produto}" target="#{produtoBean.selecionado}" />-->
-        							</p:commandLink>
- 
-        							<f:facet name="footer">	
-                						Listagem
-        							</f:facet>
-   							</p:carousel>
-   							
-   							<p:dialog widgetVar="dlg">
-   								<h:outputText id="detail" value="#{produtoBean.selecionado}" />	
-   							</p:dialog>
-   							
-                          </h:form>
+                        <h:form id="preProdPorCat">
+                         	 
+                         	 <h:outputLabel value="Selecione a categoria do Produto: " for="categoria"/>
+								<h:selectOneListbox id="categoria" value="#{apresProdutoBean.catSelecionada}" update="selProdPorCat">									  	
+            						<f:selectItems value="#{categoriaBean.lista}" var="c" itemLabel="#{c.nome}" itemValue="#{c.nome}" />
+            						<f:converter converterId="conversorCategoria"/>	
+            						<!--<f:ajax event="change" render="selProdPorCat" update="selProdPorCat"/>-->
+            						<f:ajax execute=":categoria" render="selProdPorCat:catPedidosG"/>
+            					</h:selectOneListbox>
+                         	 
+                         	 
+                         	 </h:form>
                      	 </div>
                     </div>
                 </div>
@@ -85,27 +58,12 @@
                 	<div class="indent_main">
                       <div class="bg">
                             <!-- Insira aqui o conteúdo da segunda Linha -->
-                         	 
-                         	 
-                         	 <h:form id="preProdPorCat">
-                         	 
-                         	 <h:outputLabel value="Selecione a categoria do Produto: " for="categoria"/>
-								<h:selectOneListbox id="categoria" value="#{pedidoBean.catSelecionada}" update="selProdPorCat">									  	
-            						<f:selectItems value="#{categoriaBean.lista}" var="c" itemLabel="#{c.nome}" itemValue="#{c.nome}" />
-            						<f:converter converterId="conversorCategoria"/>	
-            						<!--<f:ajax event="change" render="selProdPorCat" update="selProdPorCat"/>-->
-            						<f:ajax execute=":categoria" render="selProdPorCat:catPedidosG"/>
-            					</h:selectOneListbox>
-                         	 
-                         	 
-                         	 </h:form>
-                         	 
                          	                        	   
                             <h:form id="selProdPorCat">
                             
                             
                             <h:panelGroup id="catPedidosG">
-    						<p:carousel id="catPedidos" value="#{pedidoBean.lista}" headerText="Produtos" var="produto" effect="fade" vertical="false" numVisible="4" circular="false" itemStyle="height:250px;width:290px">
+    						<p:carousel id="catPedidos" value="#{apresProdutoBean.lista}" headerText="Produtos" var="produto" effect="fade" vertical="false" numVisible="4" circular="false" itemStyle="height:250px;width:290px">
        							<h:panelGrid columns="2" style="width:100%" cellpadding="2" columnClasses="label,value">
            							<f:facet name="header">
                 						<p:graphicImage value="#{contextoBean.imgStream}" width="100" height="70">
