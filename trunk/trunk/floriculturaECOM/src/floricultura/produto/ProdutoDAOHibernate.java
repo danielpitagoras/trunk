@@ -61,8 +61,6 @@ public class ProdutoDAOHibernate implements ProdutoDAO {
 	public List<Produto> listarPorCategoria(Categoria categoria){
 		Criteria criteria = this.session.createCriteria(Produto.class);
 		criteria.add(Restrictions.eqOrIsNull("categoria", categoria));
-		
-		//criteria.addOrder(Order.asc("codigo"));
 		return criteria.list();
 	}
 	
