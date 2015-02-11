@@ -83,14 +83,11 @@
         						
         						</h:panelGrid>
         							<br></br>
-        							<!--  
-        							<p:commandLink action="#{pedidoBean.redirecionaUsuario()}">
+        							<p:commandLink update="#{produtoBean.selecionado}">
         								<h:outputText value="Adicionar ao carrinho" style="color:blue" />
-        								<f:ajax execute="@form" render="@all"/>
+        								<!--<f:setPropertyActionListener value="#{produto}" target="#{produtoBean.selecionado}" />-->
         							</p:commandLink>
- 									-->
- 									<h:commandButton action="#{pedidoBean.redirecionaUsuario}" value="Adicionar ao carrinho" />
- 									
+ 
         							<f:facet name="footer">	
                 						Listagem
         							</f:facet>

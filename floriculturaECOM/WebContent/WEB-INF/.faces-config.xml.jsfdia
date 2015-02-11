@@ -25,4 +25,17 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#publico#usuario.xhtml"
   PATH="/publico/usuario.xhtml" SHAPE="256,289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#restrito#apresentacao.xhtml"
+  PATH="/restrito/apresentacao.xhtml" SHAPE="240,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#publico#apresentacao.xhtml"
+  PATH="/publico/apresentacao.xhtml" SHAPE="32,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#publico#apresentacao.xhtml:0" NAME="item"
+   PATH="/publico/apresentacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="redirecionaRestrito::#restrito#apresentacao.xhtml" NAME="output"
+    PATH="/restrito/apresentacao.xhtml"
+    TARGET="rules:#restrito#apresentacao.xhtml"
+    TITLE="redirecionaRestrito" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

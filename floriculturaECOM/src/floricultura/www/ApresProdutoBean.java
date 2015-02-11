@@ -36,9 +36,7 @@ public class ApresProdutoBean {
 	}
 
 	public Categoria getCatSelecionada() {
-		
 		return catSelecionada;
-		
 	}
 
 	public void setCatSelecionada(Categoria catSelecionada) {
