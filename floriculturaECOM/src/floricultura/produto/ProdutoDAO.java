@@ -1,7 +1,7 @@
 package floricultura.produto;
 
+import java.util.Date;
 import java.util.List;
-
 import floricultura.categoria.Categoria;
 import floricultura.usuario.Usuario;
 
@@ -15,5 +15,6 @@ public interface ProdutoDAO {
 	public Produto buscarPorCodigo(Integer codigo);
 	public Produto buscarPorCategoria(Categoria categoria);
 	public List<Produto> listar();
+	public List<Produto> listarPorCategoria(Categoria categoria);
 	
 }

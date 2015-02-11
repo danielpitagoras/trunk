@@ -41,11 +41,6 @@ public class ContextoBean {
 	    else {
 	        // Fase do browser solicitar a imagem.
 	        String id = context.getExternalContext().getRequestParameterMap().get("id");
-	        //Image image = service.find(Long.valueOf(id));
-	        //return new DefaultStreamedContent(new ByteArrayInputStream(image.getBytes()));
-	        //ContextoBean contextoBean = ContextoUtil.getContextoBean();
-	        //return new DefaultStreamedContent(new ByteArrayInputStream(contextoBean.getImgb()));
-	    	//return null;
 	        
 	        ProdutoRN produtoRN = new ProdutoRN();
 			this.lista = produtoRN.listar();

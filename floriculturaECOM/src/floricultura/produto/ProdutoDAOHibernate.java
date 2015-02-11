@@ -6,6 +6,7 @@ import floricultura.categoria.Categoria;
 import floricultura.usuario.Usuario;
 
 import org.hibernate.*;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 public class ProdutoDAOHibernate implements ProdutoDAO {
@@ -54,6 +55,15 @@ public class ProdutoDAOHibernate implements ProdutoDAO {
 	@SuppressWarnings("unchecked")
 	public List<Produto> listar() {
 		return this.session.createCriteria(Produto.class).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Produto> listarPorCategoria(Categoria categoria){
+		Criteria criteria = this.session.createCriteria(Produto.class);
+		criteria.add(Restrictions.eqOrIsNull("categoria", categoria));
+		
+		//criteria.addOrder(Order.asc("codigo"));
+		return criteria.list();
 	}
 	
 }

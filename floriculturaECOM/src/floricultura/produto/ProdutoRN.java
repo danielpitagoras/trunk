@@ -11,15 +11,15 @@ public class ProdutoRN {
 	private ProdutoDAO produtoDAO;
 	
 	public ProdutoRN(){
-		
 		this.produtoDAO = DAOFactory.criarProdutoDAO();
-	
 	}
 	
 	public List<Produto> listar() {
-	
 		return this.produtoDAO.listar();
-		
+	}
+	
+	public List<Produto> listarPorCategoria(Categoria categoria) {
+		return this.produtoDAO.listarPorCategoria(categoria);
 	}
 	
 	public Produto carregar(Integer codigo) {
