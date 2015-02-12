@@ -10,15 +10,9 @@ import javax.faces.context.FacesContext;
 
 public class PedidoBean {
 
-	public String redirecionaUsuario(){ 
+	
 		
-		FacesContext context = FacesContext.getCurrentInstance();
-		FacesMessage facesMessage = new FacesMessage("ƒ necess‡rio cadastro no sistema.");
-		context.addMessage(null, facesMessage);
-		
-		return "redirecionaRestrito";
-		
-	}
+	
 	
 	
 }

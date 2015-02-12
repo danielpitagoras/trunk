@@ -59,7 +59,6 @@
                          	                        	   
                             <h:form id="selProdPorCat">
                             
-                            
                             <h:panelGroup id="catPedidosG">
     						<p:carousel id="catPedidos" value="#{apresProdutoBean.lista}" headerText="Produtos" var="produto" effect="fade" vertical="false" numVisible="4" circular="false" itemStyle="height:250px;width:290px">
        							<h:panelGrid columns="2" style="width:100%" cellpadding="2" columnClasses="label,value">
@@ -83,13 +82,12 @@
         						
         						</h:panelGrid>
         							<br></br>
-        							<!--  
-        							<p:commandLink action="#{pedidoBean.redirecionaUsuario()}">
-        								<h:outputText value="Adicionar ao carrinho" style="color:blue" />
-        								<f:ajax execute="@form" render="@all"/>
-        							</p:commandLink>
- 									-->
- 									<h:commandButton action="#{pedidoBean.redirecionaUsuario}" value="Adicionar ao carrinho" />
+        							
+ 									
+ 									
+ 									<p:button outcome="/restrito/apresentacao.xhtml" value="Adicionar ao carrinho" icon="ui-icon-star">
+    									
+									</p:button>
  									
         							<f:facet name="footer">	
                 						Listagem
