@@ -46,6 +46,12 @@ public class ItemPedido implements Serializable {
 	@Column(name = "obs")
 	private String observacao;
 	
+	@Column(name = "peso_total")
+	private float pesoTotal;
+	
+	@Column(name = "preco_total")
+	private float precoTotal;
+	
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -102,6 +108,22 @@ public class ItemPedido implements Serializable {
 		this.observacao = observacao;
 	}
 
+	public float getPesoTotal() {
+		return pesoTotal;
+	}
+
+	public void setPesoTotal(float pesoTotal) {
+		this.pesoTotal = pesoTotal;
+	}
+
+	public float getPrecoTotal() {
+		return precoTotal;
+	}
+
+	public void setPrecoTotal(float precoTotal) {
+		this.precoTotal = precoTotal;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -112,7 +134,9 @@ public class ItemPedido implements Serializable {
 				+ ((observacao == null) ? 0 : observacao.hashCode());
 		result = prime * result + ((pedido == null) ? 0 : pedido.hashCode());
 		result = prime * result + Float.floatToIntBits(peso);
+		result = prime * result + Float.floatToIntBits(pesoTotal);
 		result = prime * result + Float.floatToIntBits(preco);
+		result = prime * result + Float.floatToIntBits(precoTotal);
 		result = prime * result + Float.floatToIntBits(quantidade);
 		return result;
 	}
@@ -148,7 +172,13 @@ public class ItemPedido implements Serializable {
 			return false;
 		if (Float.floatToIntBits(peso) != Float.floatToIntBits(other.peso))
 			return false;
+		if (Float.floatToIntBits(pesoTotal) != Float
+				.floatToIntBits(other.pesoTotal))
+			return false;
 		if (Float.floatToIntBits(preco) != Float.floatToIntBits(other.preco))
+			return false;
+		if (Float.floatToIntBits(precoTotal) != Float
+				.floatToIntBits(other.precoTotal))
 			return false;
 		if (Float.floatToIntBits(quantidade) != Float
 				.floatToIntBits(other.quantidade))
