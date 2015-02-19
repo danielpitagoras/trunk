@@ -59,7 +59,6 @@
                          	                        	   
                             <h:form id="selProdPorCat">
                             
-                            
                             <h:panelGroup id="catPedidosG">
     						<p:carousel id="catPedidos" value="#{apresProdutoBean.lista}" headerText="Produtos" var="produto" effect="fade" vertical="false" numVisible="4" circular="false" itemStyle="height:250px;width:290px">
        							<h:panelGrid columns="2" style="width:100%" cellpadding="2" columnClasses="label,value">
@@ -83,22 +82,36 @@
         						
         						</h:panelGrid>
         							<br></br>
-        							<p:button outcome="/restrito/carrinho.xhtml" value="Adicionar ao carrinho" icon="ui-icon-star">
+        							  
+        							<!--<p:commandButton outcome="/restrito/carrinho.xhtml" value="Adicionar ao carrinho" ajax="true" oncomplete="quantDialogo.show()">-->
+    								<p:button outcome="/restrito/carrinho.xhtml" value="Adicionar ao carrinho">	
     									<f:param name="prodNome" value="#{produto.nome}" />
     									<f:param name="prodPeso" value="#{produto.peso}" />
     									<f:param name="prodPreco" value="#{produto.preco}" />
     									<f:param name="prodObs" value="#{produto.observacao}" />
+    									
 									</p:button>
- 
-        							<f:facet name="footer">	
+	       							<f:facet name="footer">	
                 						Listagem
         							</f:facet>
    							</p:carousel> 
    							</h:panelGroup>
    							
+	   						<p:dialog header="Escolher quantidade" widgetVar="quantDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+	        					<p:outputPanel id="DetalheQuantidade" style="text-align:center;">
+	            					
+						                <h:outputText value="Quantidade desejada:" />
+						                <h:inputText value="#{carrinhoBean.quantidade}" />
+					 					
+					 					<p:button outcome="/restrito/carrinho.xhtml" oncomplete="quantDialogo.hide()" value="OK">
+						 					<f:param name="prodQuant" value="#{carrinhoBean.quantidade}" />
+					 					</p:button>
+
+						        </p:outputPanel>
+						    </p:dialog>
+   							
                           </h:form>
                           
-                            
                       </div>
                     </div>
                 </div>
