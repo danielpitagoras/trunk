@@ -41,20 +41,30 @@
 					  		    <f:viewParam name="prodPeso" value="#{carrinhoBean.prodPeso}" />
 					  		    <f:viewParam name="prodPreco" value="#{carrinhoBean.prodPreco}" />
 					  		    <f:viewParam name="prodObs" value="#{carrinhoBean.prodObs}" />
+					  		    
 					  		    <f:event type="preRenderView" listener="#{carrinhoBean.preencheListaItemPedido}" />
 						  	</f:metadata>
                           </h:form>
                           <h:form id="apresCarrinho">		
-                          		<h:messages />
+                 
+                          		<p:growl id="msgs" showDetail="true"/>
+                 
+                          		<p:dataTable var="ItemPedido" value="#{carrinhoBean.listaItemPedido}" rules="rows" cellpadding="5">
                           		
-                          		<p:dataTable var="ItemPedido" value="#{carrinhoBean.listaItemPedido}">
-    								
+                   		      		<f:facet name="header">
+           								Itens do carrinho: 
+       								</f:facet>
+       								
     								<p:column headerText="Nome">
         								<h:outputText value="#{ItemPedido.nome}" />
     								</p:column>
     								
     								<p:column headerText="Obs">
 								        <h:outputText value="#{ItemPedido.observacao}" />
+								    </p:column>
+								    
+								    <p:column headerText="Quantidade" editable="true" width="5">
+								    	<h:inputText value="#{ItemPedido.quantidade}" />
 								    </p:column>
 								    
 								    <p:column headerText="Peso">
@@ -64,13 +74,27 @@
 								    <p:column headerText="Preço">
 								        <h:outputText value="#{ItemPedido.preco}" />
 								    </p:column>
-
+								    
+								    <p:column headerText="Peso Total">
+								        <h:outputText value="#{ItemPedido.pesoTotal}" />
+								    </p:column>
+								    
+								    <p:column headerText="Preço Total">
+								        <h:outputText value="#{ItemPedido.precoTotal}" />
+								    </p:column>
+								    
+								    <p:column>
+									    <h:commandLink action="#{carrinhoBean.excluir}">
+	                           				<h:graphicImage library="imagens" name="excluir16.png" style="border:0" />
+	                           				<f:setPropertyActionListener target="#{carrinhoBean.itemPRemover}" value="#{ItemPedido}" />
+	                           				<f:ajax render=":apresCarrinho" />
+	                           			</h:commandLink>
+									</p:column>
 								</p:dataTable>
-
+								
 								<p:button outcome="/restrito/apresentacao.xhtml" value="Continuar comprando" icon="ui-icon-star" />
     							<p:button outcome="/restrito/fecharPedido.xhtml" value="Encerrar Pedido" icon="ui-icon-star" />			
 								
-                          		
                           </h:form>
                           
                      	 </div>
