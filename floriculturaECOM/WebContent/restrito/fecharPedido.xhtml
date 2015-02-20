@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.prime.com.tr/ui"
 	  xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -33,6 +35,51 @@
                 	<div class="indent_main">
                     	<div class="bg">
                            <!--  Insira aqui o conteúdo da primeira Linha -->
+                          <h:form id="apresCarrinho">		
+                 
+                          		<p:growl id="msgs" showDetail="true"/>
+                 
+                          		<p:dataTable var="ItemPedido" value="#{carrinhoBean.listaItemPedido}" rules="rows" cellpadding="5">
+                          		
+                   		      		<f:facet name="header">
+           								Itens do carrinho: 
+       								</f:facet>
+       								
+    								<p:column headerText="Nome">
+        								<h:outputText value="#{ItemPedido.nome}" />
+    								</p:column>
+    								
+    								<p:column headerText="Obs">
+								        <h:outputText value="#{ItemPedido.observacao}" />
+								    </p:column>
+								    
+								    <p:column headerText="Quantidade" editable="true">
+								    	<h:outputText value="#{ItemPedido.quantidade}" />
+								    </p:column>
+								    
+								    <p:column headerText="Peso">
+								        <h:outputText value="#{ItemPedido.peso}" />
+								    </p:column>
+								    
+								    <p:column headerText="Preço">
+								        <h:outputText value="#{ItemPedido.preco}" />
+								    </p:column>
+								    
+								    <p:column headerText="Peso Total">
+								        <h:outputText value="#{ItemPedido.pesoTotal}" />
+								    </p:column>
+								    
+								    <p:column headerText="Preço Total">
+								        <h:outputText value="#{ItemPedido.precoTotal}" />
+								    </p:column>
+								    
+							
+								</p:dataTable>
+								
+										
+								
+                          </h:form>
+                          
                           
                      	 </div>
                     </div>

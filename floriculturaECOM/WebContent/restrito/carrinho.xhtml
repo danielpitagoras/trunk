@@ -45,6 +45,7 @@
 					  		    <f:event type="preRenderView" listener="#{carrinhoBean.preencheListaItemPedido}" />
 						  	</f:metadata>
                           </h:form>
+                          <h1>Carrinho de compras de: #{contextoBean.usuarioLogado.nome}</h1><br/>
                           <h:form id="apresCarrinho">		
                  
                           		<p:growl id="msgs" showDetail="true"/>
@@ -63,8 +64,16 @@
 								        <h:outputText value="#{ItemPedido.observacao}" />
 								    </p:column>
 								    
-								    <p:column headerText="Quantidade" editable="true" width="5">
-								    	<h:inputText value="#{ItemPedido.quantidade}" />
+								    <p:column headerText="Quantidade" editable="true">
+								    	<h:outputText value="#{ItemPedido.quantidade}            " />
+								    	<h:commandLink action="#{carrinhoBean.adicionarQuant}" value="+">
+	                           				<f:setPropertyActionListener target="#{carrinhoBean.itemPRemover}" value="#{ItemPedido}" />
+	                           				<f:ajax render=":apresCarrinho" />
+	                           			</h:commandLink>
+	                           			<h:commandLink action="#{carrinhoBean.removerQuant}" value="            -">
+	                           				<f:setPropertyActionListener target="#{carrinhoBean.itemPRemover}" value="#{ItemPedido}" />
+	                           				<f:ajax render=":apresCarrinho" />
+	                           			</h:commandLink>
 								    </p:column>
 								    
 								    <p:column headerText="Peso">
@@ -92,8 +101,26 @@
 									</p:column>
 								</p:dataTable>
 								
-								<p:button outcome="/restrito/apresentacao.xhtml" value="Continuar comprando" icon="ui-icon-star" />
-    							<p:button outcome="/restrito/fecharPedido.xhtml" value="Encerrar Pedido" icon="ui-icon-star" />			
+								<p:button outcome="/restrito/apresentacao.xhtml" value="Continuar comprando" />
+    							<p:commandButton ajax="true" oncomplete="endDialogo.show()" value="Encerrar Pedido" />			
+								
+								<p:dialog header="Escolher Endereço de Entrega" widgetVar="endDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+	        					<p:outputPanel id="DetalheQuantidade" style="text-align:center;">
+	            					
+						                <h:outputLabel value="Selecione o endereço de entrega: " for="categoria"/>
+						                <!--  
+						                <h:selectOneListbox id="categoria" value="#{apresProdutoBean.catSelecionada}" update="selProdPorCat">									  	
+            								<f:selectItems value="#{categoriaBean.lista}" var="c" itemLabel="#{c.nome}" itemValue="#{c.nome}" />
+            								<f:converter converterId="conversorCategoria"/>	
+            								<f:ajax execute=":categoria" render="selProdPorCat:catPedidosG"/>
+            							</h:selectOneListbox>
+					 					-->
+					 					<p:button outcome="/restrito/carrinho.xhtml" oncomplete="quantDialogo.hide()" value="OK">
+						 					<!--  <f:param name="prodQuant" value="#{carrinhoBean.quantidade}" />-->
+					 					</p:button>
+
+						        </p:outputPanel>
+						    </p:dialog>
 								
                           </h:form>
                           

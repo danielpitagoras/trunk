@@ -1,14 +1,24 @@
 package floricultura.util;
 
 import floricultura.categoria.*;
+import floricultura.endereco.EnderecoDAOHibernate;
 import floricultura.pedido.PedidoDAOHibernate;
 import floricultura.produto.*;
 import floricultura.usuario.*;
 import floricultura.pedido.*;
 import floricultura.itemPedido.*;
+import floricultura.endereco.*;
 
 public class DAOFactory {
 
+	public static EnderecoDAO criarEnderecoDAO() {
+	
+		EnderecoDAOHibernate enderecoDAO = new EnderecoDAOHibernate();
+		enderecoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return enderecoDAO;
+		
+	}
+	
 	public static CategoriaDAO criarCategoriaDAO() {
 		
 		CategoriaDAOHibernate categoriaDAO = new CategoriaDAOHibernate();

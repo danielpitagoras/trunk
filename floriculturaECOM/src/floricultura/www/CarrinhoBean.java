@@ -8,9 +8,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-
 import org.primefaces.model.DefaultStreamedContent;
-
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +35,7 @@ public class CarrinhoBean {
     
 	public void preencheListaItemPedido() {
 		
+		// Checa se n‹o Ž postback para n‹o preencher a lista com itens ap—s o resultado de um postback
 		if (FacesContext.getCurrentInstance().isPostback()) {
 		
 		} else {
@@ -48,6 +47,8 @@ public class CarrinhoBean {
 			itemSelecionado.setPreco(prodPreco);
 			itemSelecionado.setObservacao(prodObs);
 			itemSelecionado.setQuantidade(1);
+			itemSelecionado.setPesoTotal(prodPeso);
+			itemSelecionado.setPrecoTotal(prodPreco);
 			
 			if (listaItemPedido.isEmpty() == true){
 				listaItemPedido.add(this.itemSelecionado);
@@ -62,11 +63,45 @@ public class CarrinhoBean {
 		 for (int i = 0; i < listaItemPedido.size(); i++) {
 	    	   if (itemPRemover.getNome() == listaItemPedido.get(i).getNome()) {
 	    		   listaItemPedido.remove(i);
+	    		   
+	    		   //Colocar mensagens de FacesMessage d‡ mensagem de erro no Datatable. (Verificar)
 	    	   }	   
 	       }
-		//listaItemPedido.remove(this.itemSelecionado);
-		
 		return null;
+	}
+	
+	public String adicionarQuant() {
+		
+		for (int i = 0; i < listaItemPedido.size(); i++) {
+	    	   if (itemPRemover.getNome() == listaItemPedido.get(i).getNome()) {
+	    		   listaItemPedido.get(i).setQuantidade(listaItemPedido.get(i).getQuantidade() + 1);
+	    		   listaItemPedido.get(i).setPesoTotal(listaItemPedido.get(i).getQuantidade() * listaItemPedido.get(i).getPeso());
+	    		   listaItemPedido.get(i).setPrecoTotal(listaItemPedido.get(i).getQuantidade() * listaItemPedido.get(i).getPreco());
+	    		   
+	    		   
+	    	   }	   
+	       }
+		return null;
+	}
+	
+	public String removerQuant() {
+		
+		for (int i = 0; i < listaItemPedido.size(); i++) {
+	    	   if (itemPRemover.getNome() == listaItemPedido.get(i).getNome()) {
+	    		   
+	    		   	if (listaItemPedido.get(i).getQuantidade() == 1){
+	    		   		
+	    		   	} else {
+	    		   		listaItemPedido.get(i).setQuantidade(listaItemPedido.get(i).getQuantidade() - 1);
+	    		   		listaItemPedido.get(i).setPesoTotal(listaItemPedido.get(i).getQuantidade() * listaItemPedido.get(i).getPeso());
+	 	    		    listaItemPedido.get(i).setPrecoTotal(listaItemPedido.get(i).getQuantidade() * listaItemPedido.get(i).getPreco());
+	 	    		    
+	 	    		   
+	    		   	}
+	    	   }	   
+	       }
+		return null;
+		
 	}
 	
 	public Usuario getUsuarioLogado(){
