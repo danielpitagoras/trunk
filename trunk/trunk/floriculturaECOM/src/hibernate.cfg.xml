@@ -22,6 +22,7 @@
     	<mapping class="floricultura.usuario.Usuario"/>
     	<mapping class="floricultura.pedido.Pedido"/>
     	<mapping class="floricultura.itemPedido.ItemPedido"/>
+    	<mapping class="floricultura.endereco.Endereco"/>
     	
     </session-factory>
 </hibernate-configuration>
