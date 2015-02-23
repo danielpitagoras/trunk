@@ -101,20 +101,24 @@
 									</p:column>
 								</p:dataTable>
 								
+									
+								<br />
 								<p:button outcome="/restrito/apresentacao.xhtml" value="Continuar comprando" />
-    							<p:commandButton ajax="true" oncomplete="endDialogo.show()" value="Encerrar Pedido" />			
+    										
 								
 								<p:dialog header="Escolher Endereço de Entrega" widgetVar="endDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 	        					<p:outputPanel id="DetalheQuantidade" style="text-align:center;">
-	            					
+	            						<!--  
 						                <h:outputLabel value="Selecione o endereço de entrega: " for="categoria"/>
-						                <!--  
-						                <h:selectOneListbox id="categoria" value="#{apresProdutoBean.catSelecionada}" update="selProdPorCat">									  	
-            								<f:selectItems value="#{categoriaBean.lista}" var="c" itemLabel="#{c.nome}" itemValue="#{c.nome}" />
-            								<f:converter converterId="conversorCategoria"/>	
-            								<f:ajax execute=":categoria" render="selProdPorCat:catPedidosG"/>
+						                  
+						                <h:selectOneListbox id="endereco" value="#{pedidoBean.enderecoSelecionado}" update="">									  	
+            								<f:selectItems value="#{enderecoBean.listadeEnderecos}" var="e" itemLabel="#{e.descricao}" itemValue="#{e.descricao}" />
+            								<f:converter converterId="conversorEnderecos"/>	
+            								<f:ajax execute=":endereco" render="selProdPorCat:catPedidosG"/>	
             							</h:selectOneListbox>
-					 					-->
+            							
+            							-->					
+										 					
 					 					<p:button outcome="/restrito/carrinho.xhtml" oncomplete="quantDialogo.hide()" value="OK">
 						 					<!--  <f:param name="prodQuant" value="#{carrinhoBean.quantidade}" />-->
 					 					</p:button>
@@ -133,11 +137,39 @@
                 	<div class="indent_main">
                       <div class="bg">
                             <!-- Insira aqui o conteúdo da segunda Linha -->
+                            <h:form id="finalPedido">
+	                            <h1><h:outputLabel value="Selecione o endereço de entrega: " for="endereco"/></h1><br /><br />
+								<h:selectOneListbox id="endereco" value="#{pedidoBean.enderecoSelecionado}" update="endInfo:dtEndInfo">									  	
+	            					<f:selectItems value="#{enderecoBean.listadeEnderecos}" var="e" itemLabel="#{e.descricao}" itemValue="#{e.descricao}" />
+	            						<f:converter converterId="conversorEnderecos"/>	
+	            						<f:ajax execute=":endereco" render="endInfo:dtEndInfo"/>	
+	            				</h:selectOneListbox>	
+                            </h:form>
+                            
+                            <h:form id="endInfo">
+                            	<h:panelGroup id="dtEndInfo" style="text-align:center;">
+	                            	<h3>
+	                            	<h:outputLabel value="Endereço para entrega:"/> <br />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.cep}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.rua}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.numero}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.complemento}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.bairro}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.cidade}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.estado}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.pais}" />
+	                            	<br />
+	                            	</h3>
+                            	</h:panelGroup>	
+ 								                           		
+                            	<p:commandButton ajax="true" oncomplete="endDialogo.show()" value="Encerrar Pedido" />
+                            
+                            </h:form>
                       </div>
                     </div>
                 </div>
             </div>
-    </div>	 
+    	</div>	 
         <div id="footer"><div class="indent_footer">Daniel P. &copy; 2015 | <a href="">Privacy Policy</a></div></div>
   </div>
 </div>
