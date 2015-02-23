@@ -20,6 +20,10 @@ public class EnderecoRN {
 		return this.enderecoDAO.listarPorUsuario(usuario);
 	}
 	
+	public Endereco buscarPorDesc(String desc) {
+		return this.enderecoDAO.buscarPorDesc(desc);
+	}
+	
 	public Endereco carregar(Integer codigo) {
 		return this.enderecoDAO.carregar(codigo);
 	}

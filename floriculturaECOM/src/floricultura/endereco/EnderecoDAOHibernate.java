@@ -1,8 +1,10 @@
 package floricultura.endereco;
 
 import java.util.List;
+
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
+
 import floricultura.usuario.Usuario;
 
 public class EnderecoDAOHibernate implements EnderecoDAO {
@@ -43,6 +45,14 @@ public class EnderecoDAOHibernate implements EnderecoDAO {
 		Criteria criteria = this.session.createCriteria(Endereco.class);
 		criteria.add(Restrictions.eqOrIsNull("usuario", usuario));
 		return criteria.list();
+	}
+
+	@Override
+	public Endereco buscarPorDesc(String desc) {
+		String hql = "select e from Endereco e where e.descricao = :desc";
+		Query consulta = this.session.createQuery(hql);
+		consulta.setString("desc", desc);
+		return (Endereco) consulta.uniqueResult();
 	}
 
 }

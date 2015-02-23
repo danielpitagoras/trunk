@@ -6,6 +6,7 @@ import javax.faces.bean.RequestScoped;
 import java.util.List;
 import java.util.ArrayList;
 
+
 import floricultura.endereco.*;
 import floricultura.usuario.*;
 import floricultura.util.ContextoUtil;
@@ -20,8 +21,7 @@ public class EnderecoBean {
 	private Usuario usuarioLogado = null;
 	private List<Endereco> listadeEnderecos;
 	
-	public String salvar() {
-		
+	public String salvar() {	
 		ContextoBean contextoBean = ContextoUtil.getContextoBean();
 		this.usuarioLogado = contextoBean.getUsuarioLogado();
 		
@@ -48,13 +48,20 @@ public class EnderecoBean {
 			EnderecoRN enderecoRN = new EnderecoRN();
 			
 			if (this.usuarioLogado == null) {
-				this.listadeEnderecos = enderecoRN.listar();
+				//this.listadeEnderecos = enderecoRN.listar();
 			} else {
 				this.listadeEnderecos = enderecoRN.listarPorUsuario(usuarioLogado);
 			}
 			
 		} 
 		return this.listadeEnderecos;
+	}
+	
+	public Endereco buscarPorDesc(String desc){
+		
+		EnderecoRN enderecoRN = new EnderecoRN();
+		return enderecoRN.buscarPorDesc(desc);
+		
 	}
 	
 	public void setListadeEnderecos(List<Endereco> listadeEnderecos) {
