@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	 
+	<title>Clarinda Flores</title>
+	 
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputStylesheet library="css" name="layout.css"/>
+	
+	<style type="text/css"><!--
+	#logotipo {
+		text-align: center;
+	} -->
+    </style>
+</h:head>
+
+<body  id="page2">
+<div class="site_center">
+  <div class="site_center1">
+        <div id="header">
+        	<!--  <h:graphicImage library="imagens" name="top.jpg" styleClass="site_center" />-->
+      		<a href="#"><h:graphicImage library="imagens" name="icon.gif" styleClass="icon" /></a><a href="#"><h:graphicImage library="imagens" name="icon1.gif" styleClass="icon1" /></a><a href="#"><h:graphicImage library="imagens" name="icon2.gif" styleClass="icon2" /></a>
+			<a href="#"><h:graphicImage library="imagens" name="logo.gif" styleClass="logo" /></a>
+								<h:graphicImage library="imagens" name="m1.gif" styleClass="m1" />
+			<a href="#"><h:graphicImage library="imagens" name="m1.gif" styleClass="m1" /></a><a href="index-1.html"><h:graphicImage library="imagens" name="m2.gif" styleClass="m2" /></a><a href="index-2.html"><h:graphicImage library="imagens" name="m3.gif" styleClass="m3" /></a><a href="index-3.html"></a>
+        </div>
+   	<div id="content">	
+            <div class="row1">
+            	<div class="row1_bg">
+                	<div class="indent_main">
+                    	<div class="bg">
+                           <!--  Insira aqui o conteúdo da primeira Linha -->
+                           <h1>Cadastro de Endereço de: #{contextoBean.usuarioLogado.nome}</h1><br/>
+                       
+                          
+                     	 </div>
+                    </div>
+                </div>
+            </div>
+        	<div class="row2">
+            	<div class="row2_bg">
+                	<div class="indent_main">
+                      <div class="bg">
+                            <!-- Insira aqui o conteúdo da segunda Linha -->
+                            <h:form id="cadEndereco">
+                           		<h:messages/>
+                           		<h:inputHidden value="#{enderecoBean.endereco.codigo}" />
+                           		<h:panelGrid column="2">
+	                           		<h:outputLabel value="Descrição: " for="descricao"/>
+	                           			<h:inputText id="descricao" label="Descricao" value="#{enderecoBean.endereco.descricao}" size="30" maxlength="30" required="true" requiredMessage="Descrição do endereço é requirida?">
+	                           				<f:validateLength maximum="30"/>
+	                                    </h:inputText>
+									<h:outputLabel value="CEP: " for="cep" />                           			
+	                           			<h:inputText id="cep" label="Cep" value="#{enderecoBean.endereco.cep}" />
+									<h:outputLabel value="Rua: " for="rua" />                           			
+	                           			<h:inputText id="rua" label="Rua" value="#{enderecoBean.endereco.rua}" />	                           				
+	                                <h:outputLabel value="Número: " for="numero" />                           			
+	                           			<h:inputText id="numero" label="Número" value="#{enderecoBean.endereco.numero}" />    
+	                           		<h:outputLabel value="Bairro: " for="bairro" />                           			
+	                           			<h:inputText id="bairro" label="Bairro" value="#{enderecoBean.endereco.bairro}" />
+	                           		<h:outputLabel value="Complemento: " for="complemento" />                           			
+	                           			<h:inputText id="complemento" label="Complemento" value="#{enderecoBean.endereco.complemento}" />
+	                           		<h:outputLabel value="Cidade: " for="cidade" />                           			
+	                           			<h:inputText id="cidade" label="Cidade" value="#{enderecoBean.endereco.cidade}" />
+	                           		<h:outputLabel value="Estado: " for="estado" />                           			
+	                           			<h:inputText id="estado" label="Estado" value="#{enderecoBean.endereco.estado}" />
+	                           		<h:outputLabel value="País: " for="pais" />                           			
+	                           			<h:inputText id="pais" label="País" value="#{enderecoBean.endereco.pais}" />		
+                           		</h:panelGrid>
+                           			<h:commandButton action="#{enderecoBean.salvar()}" value="Salvar" />
+                           	</h:form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </div>	 
+        <div id="footer"><div class="indent_footer">Daniel P. &copy; 2015 | <a href="">Privacy Policy</a></div></div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
