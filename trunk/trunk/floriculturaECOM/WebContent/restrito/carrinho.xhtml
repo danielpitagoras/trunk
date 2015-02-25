@@ -104,28 +104,7 @@
 									
 								<br />
 								<p:button outcome="/restrito/apresentacao.xhtml" value="Continuar comprando" />
-    										
-								
-								<p:dialog header="Escolher Endereço de Entrega" widgetVar="endDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-	        					<p:outputPanel id="DetalheQuantidade" style="text-align:center;">
-	            						<!--  
-						                <h:outputLabel value="Selecione o endereço de entrega: " for="categoria"/>
-						                  
-						                <h:selectOneListbox id="endereco" value="#{pedidoBean.enderecoSelecionado}" update="">									  	
-            								<f:selectItems value="#{enderecoBean.listadeEnderecos}" var="e" itemLabel="#{e.descricao}" itemValue="#{e.descricao}" />
-            								<f:converter converterId="conversorEnderecos"/>	
-            								<f:ajax execute=":endereco" render="selProdPorCat:catPedidosG"/>	
-            							</h:selectOneListbox>
-            							
-            							-->					
-										 					
-					 					<p:button outcome="/restrito/carrinho.xhtml" oncomplete="quantDialogo.hide()" value="OK">
-						 					<!--  <f:param name="prodQuant" value="#{carrinhoBean.quantidade}" />-->
-					 					</p:button>
-
-						        </p:outputPanel>
-						    </p:dialog>
-								
+    							
                           </h:form>
                           
                      	 </div>
@@ -143,21 +122,59 @@
 	            					<f:selectItems value="#{enderecoBean.listadeEnderecos}" var="e" itemLabel="#{e.descricao}" itemValue="#{e.descricao}" />
 	            						<f:converter converterId="conversorEnderecos"/>	
 	            						<f:ajax execute=":endereco" render="endInfo:dtEndInfo"/>	
-	            				</h:selectOneListbox>	
+	            				</h:selectOneListbox> <br />
+	            				<p:commandButton ajax="true" oncomplete="endDialogo.show()" value="Adicionar endereço" />	
+                            
+	                            <p:dialog header="Escolher Endereço de Entrega" widgetVar="endDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        					<p:outputPanel id="DetalheEndereco" style="text-align:center;">
+		            						
+		            						<h:form id="novoEndereco">
+		            						<h:inputHidden value="#{enderecoBean.endereco.codigo}" />
+			                           		<h:panelGrid column="2">
+				                           		<h:outputLabel value="Descrição: " for="descricao"/>
+				                           			<h:inputText id="descricao" label="Descricao" value="#{enderecoBean.endereco.descricao}" size="30" maxlength="30" required="true" requiredMessage="Descrição do endereço é requirida?">
+				                           				<f:validateLength maximum="30"/>
+				                                    </h:inputText>
+												<h:outputLabel value="CEP: " for="cep" />                           			
+				                           			<h:inputText id="cep" label="Cep" value="#{enderecoBean.endereco.cep}" />
+												<h:outputLabel value="Rua: " for="rua" />                           			
+				                           			<h:inputText id="rua" label="Rua" value="#{enderecoBean.endereco.rua}" />	                           				
+				                                <h:outputLabel value="Número: " for="numero" />                           			
+				                           			<h:inputText id="numero" label="Número" value="#{enderecoBean.endereco.numero}" />    
+				                           		<h:outputLabel value="Bairro: " for="bairro" />                           			
+				                           			<h:inputText id="bairro" label="Bairro" value="#{enderecoBean.endereco.bairro}" />
+				                           		<h:outputLabel value="Complemento: " for="complemento" />                           			
+				                           			<h:inputText id="complemento" label="Complemento" value="#{enderecoBean.endereco.complemento}" />
+				                           		<h:outputLabel value="Cidade: " for="cidade" />                           			
+				                           			<h:inputText id="cidade" label="Cidade" value="#{enderecoBean.endereco.cidade}" />
+				                           		<h:outputLabel value="Estado: " for="estado" />                           			
+				                           			<h:inputText id="estado" label="Estado" value="#{enderecoBean.endereco.estado}" />
+				                           		<h:outputLabel value="País: " for="pais" />                           			
+				                           			<h:inputText id="pais" label="País" value="#{enderecoBean.endereco.pais}" />		
+			                           		</h:panelGrid>				
+												<h:commandButton action="#{enderecoBean.salvar()}" oncomplete="endDialogo.hide()" value="Salvar" />
+											</h:form> 					
+						 					<p:button outcome="/restrito/carrinho.xhtml" oncomplete="endDialogo.hide()" value="OK">
+							 					<!--  <f:param name="prodQuant" value="#{carrinhoBean.quantidade}" />-->
+						 					</p:button>
+	
+							        </p:outputPanel>
+							    </p:dialog>
+                            
                             </h:form>
                             
                             <h:form id="endInfo">
                             	<h:panelGroup id="dtEndInfo" style="text-align:center;">
 	                            	<h3>
 	                            	<h:outputLabel value="Endereço para entrega:"/> <br />
-	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.cep}" />
+	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.cep}" /> <br />
 	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.rua}" />
-	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.numero}" />
+	                            	<h:outputText value="  #{pedidoBean.enderecoSelecionado.numero}" />,
 	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.complemento}" />
-	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.bairro}" />
-	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.cidade}" />
-	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.estado}" />
-	                            	<h:outputText value="#{pedidoBean.enderecoSelecionado.pais}" />
+	                            	<h:outputText value="  -  #{pedidoBean.enderecoSelecionado.bairro}" />
+	                            	<h:outputText value=" - #{pedidoBean.enderecoSelecionado.cidade} " />,
+	                            	<h:outputText value=" #{pedidoBean.enderecoSelecionado.estado}" />
+	                            	<h:outputText value=" - #{pedidoBean.enderecoSelecionado.pais}" />
 	                            	<br />
 	                            	</h3>
                             	</h:panelGroup>	
