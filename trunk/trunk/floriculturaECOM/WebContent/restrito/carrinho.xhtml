@@ -104,9 +104,10 @@
 									
 								<br />
 								<p:button outcome="/restrito/apresentacao.xhtml" value="Continuar comprando" />
-    							
+								<h:commandButton action="#{carrinhoBean.salvar()}" value="Confirmar Carrinho" />
+								
+								
                           </h:form>
-                          
                      	 </div>
                     </div>
                 </div>
@@ -154,10 +155,7 @@
 			                           		</h:panelGrid>				
 												<h:commandButton action="#{enderecoBean.salvar()}" oncomplete="endDialogo.hide()" value="Salvar" />
 											</h:form> 					
-						 					<p:button outcome="/restrito/carrinho.xhtml" oncomplete="endDialogo.hide()" value="OK">
-							 					<!--  <f:param name="prodQuant" value="#{carrinhoBean.quantidade}" />-->
-						 					</p:button>
-	
+						 					
 							        </p:outputPanel>
 							    </p:dialog>
                             
@@ -178,8 +176,8 @@
 	                            	<br />
 	                            	</h3>
                             	</h:panelGroup>	
- 								                           		
-                            	<p:commandButton ajax="true" oncomplete="endDialogo.show()" value="Encerrar Pedido" />
+ 								
+                            	<h:commandButton action="#{pedidoBean.salvar()}" value="Encerrar Pedido" />	
                             
                             </h:form>
                       </div>

@@ -8,13 +8,16 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+
 import org.primefaces.model.DefaultStreamedContent;
+
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import floricultura.itemPedido.*;
 import floricultura.usuario.*;
+import floricultura.util.ContextoUtil;
 
 @ManagedBean(name = "carrinhoBean")
 @SessionScoped
@@ -31,7 +34,13 @@ public class CarrinhoBean {
 	private ItemPedido itemSelecionado = new ItemPedido();
 	private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>();
 	private ListDataModel<ItemPedido> listaItemPedidoModel = new ListDataModel<ItemPedido>();
+	//private ContextoBean contextoBean = new ContextoBean();
 	
+	/*
+	public String salvar() {
+		contextoBean.setListaItemPedido(this.listaItemPedido);
+		return null;
+	}*/
     
 	public void preencheListaItemPedido() {
 		
@@ -171,6 +180,7 @@ public class CarrinhoBean {
 	}
 
 	public List<ItemPedido> getListaItemPedido() {
+		//contextoBean.setListaItemPedido(listaItemPedido);
 		return listaItemPedido;
 	}
 
