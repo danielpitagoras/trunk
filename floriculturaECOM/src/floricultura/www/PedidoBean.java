@@ -30,7 +30,8 @@ public class PedidoBean {
 	private Endereco enderecoSelecionado;
 	private String enderecoAgrupado;
 	private ItemPedido itemPedido;
-	private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>();
+	private List<ItemPedido> listaItemPedido;
+	//private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>();
 	
 	public String getEnderecoAgrupado() {
 		
@@ -61,13 +62,19 @@ public class PedidoBean {
 			strBuffer.append(enderecoSelecionado.getPais());
 			
 		pedidoEmEdicao.setEnderecoEntrega(strBuffer.toString());
+		this.listaItemPedido = (ContextoUtil.getContextoBean().getListaItemPedido());
 		
-		
+		if (listaItemPedido == null) {
+			return null;
+		} else { 
+			for (int i = 0; i < listaItemPedido.size(); i++){
+				System.out.println(listaItemPedido.get(i).getNome());
+			}
+		}
 		//this.pedidoEmEdicao.setPesoTotal();
 		//this.pedidoEmEdicao.setPrecoTotal();
 		//pedidoRN.salvar(pedidoEmEdicao);
 		return null;
-		
 	}
 
 	public void setEnderecoAgrupado(String enderecoAgrupado) {

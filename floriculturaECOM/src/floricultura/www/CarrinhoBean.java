@@ -19,6 +19,7 @@ import floricultura.itemPedido.*;
 import floricultura.usuario.*;
 import floricultura.util.ContextoUtil;
 
+
 @ManagedBean(name = "carrinhoBean")
 @SessionScoped
 
@@ -34,13 +35,13 @@ public class CarrinhoBean {
 	private ItemPedido itemSelecionado = new ItemPedido();
 	private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>();
 	private ListDataModel<ItemPedido> listaItemPedidoModel = new ListDataModel<ItemPedido>();
+	private ContextoBean contextoBean = ContextoUtil.getContextoBean();
 	//private ContextoBean contextoBean = new ContextoBean();
 	
-	/*
 	public String salvar() {
 		contextoBean.setListaItemPedido(this.listaItemPedido);
 		return null;
-	}*/
+	}
     
 	public void preencheListaItemPedido() {
 		
