@@ -181,7 +181,6 @@ public class CarrinhoBean {
 	}
 
 	public List<ItemPedido> getListaItemPedido() {
-		//contextoBean.setListaItemPedido(listaItemPedido);
 		return listaItemPedido;
 	}
 
