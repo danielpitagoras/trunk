@@ -32,7 +32,7 @@ public class ContextoBean {
 	private byte[] imgb = null;
 	private List<Produto> lista;
 	//private List<ItemPedido> listaItemPedido;
-	//private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>(); 
+	private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>(); 
 	
 	public ContextoBean() {
 		
@@ -172,13 +172,13 @@ public class ContextoBean {
 		this.usuarioLogado = usuarioLogado;
 	}
 	
-	/*
+	
 	public List<ItemPedido> getListaItemPedido() {
 		return listaItemPedido;
 	}
 
 	public void setListaItemPedido(List<ItemPedido> listaItemPedido) {
 		this.listaItemPedido = listaItemPedido;
-	}*/
+	}
 	
 }
