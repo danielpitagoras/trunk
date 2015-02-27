@@ -33,7 +33,7 @@
 			<from-view-id>/restrito/carrinho.xhtml</from-view-id>
 			<navigation-case>
 				<from-outcome>PedidoSalvo</from-outcome>
-				<to-view-id>/retrito/fecharPedido.xhtml</to-view-id>
+				<to-view-id>/restrito/fecharPedido.xhtml</to-view-id>
 			</navigation-case>
 		</navigation-rule>
 		<!--

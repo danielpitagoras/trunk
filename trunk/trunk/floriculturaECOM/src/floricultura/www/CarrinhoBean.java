@@ -36,7 +36,6 @@ public class CarrinhoBean {
 	private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>();
 	private ListDataModel<ItemPedido> listaItemPedidoModel = new ListDataModel<ItemPedido>();
 	private ContextoBean contextoBean = ContextoUtil.getContextoBean();
-	//private ContextoBean contextoBean = new ContextoBean();
 	
 	public String salvar() {
 		contextoBean.setListaItemPedido(this.listaItemPedido);

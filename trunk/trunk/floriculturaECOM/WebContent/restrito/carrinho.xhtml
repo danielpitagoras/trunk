@@ -121,8 +121,8 @@
                             <h:form id="finalPedido">
 	                            <h1><h:outputLabel value="Selecione o endereço de entrega: " for="endereco"/></h1><br /><br />
 								<h:selectOneListbox id="endereco" value="#{pedidoBean.enderecoSelecionado}" update="endInfo:dtEndInfo">									  	
-	            					<f:selectItems value="#{enderecoBean.listadeEnderecos}" var="e" itemLabel="#{e.descricao}" itemValue="#{e.descricao}" />
-	            						<f:converter converterId="conversorEnderecos"/>	
+	            					<f:selectItems value="#{enderecoBean.listadeEnderecos}" var="endereco" itemLabel="#{endereco.descricao}" itemValue="#{endereco}" />
+	            						<f:converter converterId="conversorEnd"/>	
 	            						<f:ajax execute=":endereco" render="endInfo:dtEndInfo"/>	
 	            				</h:selectOneListbox> <br />
 	            				<p:commandButton ajax="true" oncomplete="endDialogo.show()" value="Adicionar endereço" />	

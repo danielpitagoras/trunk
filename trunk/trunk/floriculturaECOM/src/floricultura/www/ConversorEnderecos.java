@@ -15,8 +15,9 @@ public class ConversorEnderecos implements Converter {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
         EnderecoBean enderecoBean = (EnderecoBean) context.getELContext().getELResolver().getValue(context.getELContext(), null, "enderecoBean");
+        //return enderecoBean.buscarPorCodigo(Integer.parseInt(key));
         return enderecoBean.buscarPorDesc(key);
-        
+        //return (Endereco) enderecoBean.buscarPorCodigo(Integer.parseInt(key));
 	}
 
 	@Override
