@@ -24,6 +24,14 @@ public class EnderecoRN {
 		return this.enderecoDAO.buscarPorDesc(desc);
 	}
 	
+	public Endereco buscarPorDescEUsuario(String desc, int codigo) {
+		return this.enderecoDAO.buscarPorDescEUsuario(desc,codigo);
+	}
+	
+	public Endereco buscarPorCodigo(int codigo){
+		return this.enderecoDAO.buscarPorCodigo(codigo);
+	}
+	
 	public Endereco carregar(Integer codigo) {
 		return this.enderecoDAO.carregar(codigo);
 	}

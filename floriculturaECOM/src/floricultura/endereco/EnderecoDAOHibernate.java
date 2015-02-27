@@ -54,5 +54,23 @@ public class EnderecoDAOHibernate implements EnderecoDAO {
 		consulta.setString("desc", desc);
 		return (Endereco) consulta.uniqueResult();
 	}
+	
+	@Override
+	public Endereco buscarPorDescEUsuario(String desc, int codigo) {
+		String hql = "select e from Endereco e where e.descricao = :desc and e.codigo = :codigo";
+		Query consulta = this.session.createQuery(hql);
+		consulta.setString("desc", desc);
+		consulta.setInteger("codigo", codigo);
+		return (Endereco) consulta.uniqueResult();
+	}
+	
+	@Override
+	public Endereco buscarPorCodigo(int codigo) {
+		String hql = "select e from Endereco e where e.codigo = :codigo";
+		Query consulta = this.session.createQuery(hql);
+		consulta.setInteger("codigo", codigo);
+		return (Endereco) consulta.uniqueResult();
+					
+	}
 
 }

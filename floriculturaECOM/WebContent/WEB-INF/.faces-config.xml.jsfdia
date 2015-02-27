@@ -42,11 +42,11 @@
   PATH="/restrito/carrinho.xhtml" SHAPE="32,497,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#restrito#carrinho.xhtml:0" NAME="item"
    PATH="/restrito/carrinho.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="PedidoSalvo::#retrito#fecharPedido.xhtml"
-    NAME="output" PATH="/retrito/fecharPedido.xhtml"
-    TARGET="rules:#retrito#fecharPedido.xhtml" TITLE="PedidoSalvo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="PedidoSalvo::#restrito#fecharPedido.xhtml"
+    NAME="output" PATH="/restrito/fecharPedido.xhtml"
+    TARGET="rules:#restrito#fecharPedido.xhtml" TITLE="PedidoSalvo" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#retrito#fecharPedido.xhtml"
-  PATH="/retrito/fecharPedido.xhtml" SHAPE="240,513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#restrito#fecharPedido.xhtml"
+  PATH="/restrito/fecharPedido.xhtml" SHAPE="240,513,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
