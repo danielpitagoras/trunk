@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import floricultura.endereco.*;
 import floricultura.usuario.*;
 import floricultura.util.ContextoUtil;
+import floricultura.util.WebServiceCep;
 import floricultura.www.ContextoBean;
 
 @ManagedBean(name = "enderecoBean")
@@ -22,6 +23,37 @@ public class EnderecoBean {
 	private Usuario usuarioLogado = null;
 	private List<Endereco> listadeEnderecos;
 	private ContextoBean contextoBean = ContextoUtil.getContextoBean();
+	private WebServiceCep webServiceCep;
+	private String cep;
+
+	public String getCep() {
+			
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+		
+		//Teste consulta CEP
+		
+		if (cep == null) {
+			
+		} else {
+			webServiceCep = WebServiceCep.searchCep(cep);
+			if (webServiceCep.wasSuccessful()) {
+				//System.out.println("Logradouro: " + webServiceCep.getLogradouroFull());
+				this.endereco.setRua(webServiceCep.getLogradouroFull());
+				this.endereco.setBairro(webServiceCep.getBairro());
+				this.endereco.setCidade(webServiceCep.getCidade());
+				this.endereco.setEstado(webServiceCep.getUf());
+			} else {
+				System.out.println("Erro número: " + webServiceCep.getResulCode());
+				System.out.println("Descrição do Erro: " + webServiceCep.getResulCode());
+			}
+		}
+		// Finaliza teste
+		
+	}
 
 	public String salvar() {	
 		ContextoBean contextoBean = ContextoUtil.getContextoBean();
