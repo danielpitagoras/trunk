@@ -21,7 +21,8 @@ public class EnderecoBean {
 	private Endereco endereco = new Endereco();
 	private Usuario usuarioLogado = null;
 	private List<Endereco> listadeEnderecos;
-	
+	private ContextoBean contextoBean = ContextoUtil.getContextoBean();
+
 	public String salvar() {	
 		ContextoBean contextoBean = ContextoUtil.getContextoBean();
 		this.usuarioLogado = contextoBean.getUsuarioLogado();
@@ -41,22 +42,22 @@ public class EnderecoBean {
 	
 	public List<Endereco> getListadeEnderecos() {
 		
-		ContextoBean contextoBean = ContextoUtil.getContextoBean();
-		this.usuarioLogado = contextoBean.getUsuarioLogado();	
-		
-		if (this.listadeEnderecos == null) {
-			
-			EnderecoRN enderecoRN = new EnderecoRN();
-			
-			if (this.usuarioLogado == null) {
-				//this.listadeEnderecos = enderecoRN.listar();
-			} else {
-				this.listadeEnderecos = enderecoRN.listarPorUsuario(usuarioLogado);
-			}
-			
-		}
-		return listadeEnderecos;
-		//return this.listadeEnderecos;
+			//ContextoBean contextoBean = ContextoUtil.getContextoBean();
+			this.usuarioLogado = contextoBean.getUsuarioLogado();
+			this.listadeEnderecos = contextoBean.getListadeEnderecos();
+			/*
+			if (this.listadeEnderecos == null) {
+				
+				EnderecoRN enderecoRN = new EnderecoRN();
+				
+				if (this.usuarioLogado == null) {
+					
+				} else {
+					this.listadeEnderecos = enderecoRN.listarPorUsuario(usuarioLogado);
+				}
+				
+			}*/
+			return listadeEnderecos;
 	}
 	
 	public Endereco buscarPorDesc(String desc){

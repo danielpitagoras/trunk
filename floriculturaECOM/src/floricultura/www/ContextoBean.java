@@ -21,6 +21,7 @@ import floricultura.util.ContextoUtil;
 import floricultura.categoria.*;
 import floricultura.itemPedido.ItemPedido;
 import floricultura.produto.*;
+import floricultura.endereco.*;
 
 @ManagedBean(name = "contextoBean")
 @SessionScoped
@@ -33,10 +34,37 @@ public class ContextoBean {
 	private List<Produto> lista;
 	//private List<ItemPedido> listaItemPedido;
 	private List<ItemPedido> listaItemPedido = new ArrayList<ItemPedido>(); 
+	private List<Endereco> listadeEnderecos = new ArrayList<Endereco>(); 
 	
 	public ContextoBean() {
 		
 	}
+	
+	public List<Endereco> getListadeEnderecos() {
+		
+		if (this.listadeEnderecos.isEmpty()) {
+			
+			EnderecoRN enderecoRN = new EnderecoRN();
+			
+			if (this.usuarioLogado == null) {
+				
+			} else {
+				this.listadeEnderecos = enderecoRN.listarPorUsuario(usuarioLogado);
+				return listadeEnderecos;
+			}
+			
+		}
+		
+		return listadeEnderecos;
+	}
+
+
+
+	public void setListadeEnderecos(List<Endereco> listadeEnderecos) {
+		this.listadeEnderecos = listadeEnderecos;
+	}
+
+
 
 	public StreamedContent getImgStream() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();

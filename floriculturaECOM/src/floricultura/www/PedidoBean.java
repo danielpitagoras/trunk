@@ -2,14 +2,10 @@ package floricultura.www;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import org.hibernate.Session;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.lang.StringBuffer;
@@ -18,7 +14,7 @@ import floricultura.pedido.*;
 import floricultura.usuario.Usuario;
 import floricultura.usuario.UsuarioRN;
 import floricultura.util.ContextoUtil;
-import floricultura.endereco.Endereco;
+import floricultura.endereco.*;
 import floricultura.itemPedido.ItemPedido;
 import floricultura.itemPedido.ItemPedidoRN;
 
@@ -34,8 +30,8 @@ public class PedidoBean {
 	private ItemPedido itemPedido;
 	private List<ItemPedido> listaItemPedido;
 	
+	
 	public String getEnderecoAgrupado() {
-		
 		return enderecoAgrupado;
 	}
 	
