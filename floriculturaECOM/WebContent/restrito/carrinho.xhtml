@@ -7,7 +7,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	 
-	<title>Clarinda Flores</title>
+	<title>Flores Mere</title>
 	 
 	<h:outputStylesheet library="css" name="style.css"/>
 	<h:outputStylesheet library="css" name="layout.css"/>
@@ -25,9 +25,9 @@
         <div id="header">
         	<!--  <h:graphicImage library="imagens" name="top.jpg" styleClass="site_center" />-->
       		<a href="#"><h:graphicImage library="imagens" name="icon.gif" styleClass="icon" /></a><a href="#"><h:graphicImage library="imagens" name="icon1.gif" styleClass="icon1" /></a><a href="#"><h:graphicImage library="imagens" name="icon2.gif" styleClass="icon2" /></a>
-			<a href="#"><h:graphicImage library="imagens" name="logoMere.gif" styleClass="logo" /></a>
-								<h:graphicImage library="imagens" name="m1.gif" styleClass="m1" />
-			<a href="#"><h:graphicImage library="imagens" name="m1Mere.gif" styleClass="m1" /></a><a href="index-1.html"><h:graphicImage library="imagens" name="m2Mere.gif" styleClass="m2" /></a><a href="index-2.html"><h:graphicImage library="imagens" name="m3Mere.gif" styleClass="m3" /></a><a href="index-3.html"></a>
+			<a href="apresentacao.jsf"><h:graphicImage library="imagens" name="logoMere.gif" styleClass="logo" /></a>
+								<a href="../publico/login.jsf"><h:graphicImage library="imagens" name="m1MereLogarN.gif" styleClass="m1" /></a>
+			<a href="apresentacao.jsf"><h:graphicImage library="imagens" name="m1Mere.gif" styleClass="m1" /></a><a href="endereco.jsf"><h:graphicImage library="imagens" name="m2Mere.gif" styleClass="m2" /></a><a href="../Admin/principal.jsf"><h:graphicImage library="imagens" name="m3Mere.gif" styleClass="m3" /></a><a href=""></a>
         </div>
    	<div id="content">	
             <div class="row1">
@@ -132,28 +132,34 @@
 		            						
 		            						<h:form id="novoEndereco">
 		            						<h:inputHidden value="#{enderecoBean.endereco.codigo}" />
-			                           		<h:panelGrid column="2">
-				                           		<h:outputLabel value="Descrição: " for="descricao"/>
-				                           			<h:inputText id="descricao" label="Descricao" value="#{enderecoBean.endereco.descricao}" size="30" maxlength="30" required="true" requiredMessage="Descrição do endereço é requirida?">
-				                           				<f:validateLength maximum="30"/>
-				                                    </h:inputText>
-												<h:outputLabel value="CEP: " for="cep" />                           			
-				                           			<h:inputText id="cep" label="Cep" value="#{enderecoBean.endereco.cep}" />
-												<h:outputLabel value="Rua: " for="rua" />                           			
-				                           			<h:inputText id="rua" label="Rua" value="#{enderecoBean.endereco.rua}" />	                           				
-				                                <h:outputLabel value="Número: " for="numero" />                           			
-				                           			<h:inputText id="numero" label="Número" value="#{enderecoBean.endereco.numero}" />    
-				                           		<h:outputLabel value="Bairro: " for="bairro" />                           			
-				                           			<h:inputText id="bairro" label="Bairro" value="#{enderecoBean.endereco.bairro}" />
-				                           		<h:outputLabel value="Complemento: " for="complemento" />                           			
-				                           			<h:inputText id="complemento" label="Complemento" value="#{enderecoBean.endereco.complemento}" />
-				                           		<h:outputLabel value="Cidade: " for="cidade" />                           			
-				                           			<h:inputText id="cidade" label="Cidade" value="#{enderecoBean.endereco.cidade}" />
-				                           		<h:outputLabel value="Estado: " for="estado" />                           			
-				                           			<h:inputText id="estado" label="Estado" value="#{enderecoBean.endereco.estado}" />
-				                           		<h:outputLabel value="País: " for="pais" />                           			
-				                           			<h:inputText id="pais" label="País" value="#{enderecoBean.endereco.pais}" />		
-			                           		</h:panelGrid>				
+                           		<h:panelGrid column="4">
+	                           		<h:outputLabel value="Descrição: " for="descricao"/>
+	                           			<h:inputText id="descricao" label="Descricao" value="#{enderecoBean.endereco.descricao}" size="30" maxlength="30" required="true" requiredMessage="Descrição do endereço é requirida?">
+	                           				<f:validateLength maximum="30"/>
+	                                    </h:inputText>
+									<h:outputLabel value="CEP: " for="cep" />                           			
+	                           			<h:inputText id="cep" label="Cep" value="#{enderecoBean.cep}" > 
+	                           				<f:ajax event="blur" execute=":cep" render="cadEndereco:autoCadEnd" />
+	                           			</h:inputText>
+	                           	</h:panelGrid>
+	                           		<h:panelGroup id="autoCadEnd">
+	                           		<h:panelGrid column="2">
+									<h:outputLabel value="Rua: " for="rua" />                           			
+	                           			<h:inputText id="rua" label="Rua" value="#{enderecoBean.endereco.rua}" />	                           				
+	                                <h:outputLabel value="Número: " for="numero" />                           			
+	                           			<h:inputText id="numero" label="Número" value="#{enderecoBean.endereco.numero}" />    
+	                           		<h:outputLabel value="Bairro: " for="bairro" />                           			
+	                           			<h:inputText id="bairro" label="Bairro" value="#{enderecoBean.endereco.bairro}" />
+	                           		<h:outputLabel value="Complemento: " for="complemento" />                           			
+	                           			<h:inputText id="complemento" label="Complemento" value="#{enderecoBean.endereco.complemento}" />
+	                           		<h:outputLabel value="Cidade: " for="cidade" />                           			
+	                           			<h:inputText id="cidade" label="Cidade" value="#{enderecoBean.endereco.cidade}" />
+	                           		<h:outputLabel value="Estado: " for="estado" />                           			
+	                           			<h:inputText id="estado" label="Estado" value="#{enderecoBean.endereco.estado}" />
+	                           		<h:outputLabel value="País: " for="pais" />                           			
+	                           			<h:inputText id="pais" label="País" value="#{enderecoBean.endereco.pais}" />
+	                  				</h:panelGrid>
+	                  				</h:panelGroup>				
 												<h:commandButton action="#{enderecoBean.salvar()}" oncomplete="endDialogo.hide()" value="Salvar" />
 											</h:form> 					
 						 					
